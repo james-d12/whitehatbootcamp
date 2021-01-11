@@ -34,8 +34,10 @@ const william = {
     childOf: function() {  return this.parents.map(parent => parent.firstName).join(' & ') || "Parents Unknown." },
 }
 
-console.log("William's Parents: " + william.childOf());
+console.log(william.childOf());
 console.log("Charles's Parents: " + charles.childOf());
 console.log("Diana's Parents: " + diana.childOf());
 console.log("Elizabeth's Parents: " + elizabeth.childOf());
 console.log("Philip's Parents: " + philip.childOf());
+
+module.exports={william,diana,charles,philip,elizabeth}

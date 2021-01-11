@@ -1,0 +1,22 @@
+{
+  "name": "whitehatbootcamp",
+  "version": "1.0.0",
+  "description": "Contains code for the bootcamp.",
+  "main": "person.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/james-d12/whitehatbootcamp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/james-d12/whitehatbootcamp/issues"
+  },
+  "homepage": "https://github.com/james-d12/whitehatbootcamp#readme",
+  "dependencies": {
+    "jest": "^26.6.3"
+  }
+}

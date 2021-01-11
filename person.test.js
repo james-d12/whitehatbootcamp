@@ -11,11 +11,12 @@ describe('person', () => {
     test('Charles Data', () => {
         expect(person.charles.firstName).toEqual('Charles');
         expect(person.charles.lastName).toEqual('Windsor');
-        expect(person.william.parents[0]).toEqual(person.philip)
-        expect(person.william.parents[1]).toEqual(person.elizabeth)
+        expect(person.charles.parents[0]).toEqual(person.philip)
+        expect(person.charles.parents[1]).toEqual(person.elizabeth)
     });
     test('Diana Data', () => {
         expect(person.diana.firstName).toEqual('Diana');
+        
         expect(person.diana.lastName).toEqual('Spencer');
     });
     test('Elizabeth Data', () => {
@@ -26,4 +27,8 @@ describe('person', () => {
         expect(person.philip.firstName).toEqual('Philip');
         expect(person.philip.lastName).toEqual('Windsor');
     });
+    test('Check Parents', () => {
+        expect(person.william.childOf()).toEqual("Diana & Charles")
+        expect(person.elizabeth.childOf()).toEqual("Parents Unknown.")
+    })
 });

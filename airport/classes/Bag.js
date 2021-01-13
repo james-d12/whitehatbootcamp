@@ -1,4 +1,4 @@
-
+/** Bag class - has a weight. */
 class Bag{
     /**
      * 

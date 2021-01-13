@@ -3,11 +3,21 @@ const User = require('./User')
 const bikeMultiplier = 0.05
 class Bike{
 
+    /**
+     * 
+     * @param {Charge} charge - The initial charge level. 
+     */
     constructor(charge=100){
         if (charge > 100) { charge = 100 }
         this.charge = charge
     }
 
+    /**
+     * 
+     * @param {Number} chargeLevel - The chargeLevel to set.
+     * @param {String} message - Message to display.
+     * @param {Number} timer - Time to complete.
+     */
     __helper(chargeLevel, message, timer){
         return new Promise((resolve, reject) => {
             setTimeout(() => {

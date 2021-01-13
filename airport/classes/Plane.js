@@ -1,4 +1,6 @@
 const Passenger = require('./Passenger')
+
+/** Plane class - stores information about a plane. */
 class Plane {
     /**
      * @param {String} origin - The origin airport.
@@ -16,9 +18,9 @@ class Plane {
      * @param {Array<Passenger>} passengers - The passengers to board.
      */
     boardPassengers(passengers){
-        this.passengers.concat(passengers)
-        this.passengers.forEach(passenger => {
+        passengers.forEach(passenger => {
             console.log(passenger.name + " is boarding plane:" + this.flightNumber)
+            this.passengers.push(passenger)
         });
     }
 

@@ -38,8 +38,9 @@ class Airport {
      */
     takeOffPlane(plane){
         const index = this.planes.indexOf(plane)
-        console.log("Flight:", plane.flightNumber, "has taken off from ", this.name, "to:", plane.destination)
         this.planes.splice(index, 1)
+        console.log("Flight:", plane.flightNumber, "has taken off from ", this.name, "to:", plane.destination)
+
         this.constructor.airports.forEach(airport => {
             if (airport.name === plane.destination){
                 airport.landPlane(plane)
@@ -59,7 +60,7 @@ class Airport {
      */
     getInfo() {
         return new Promise((resolve, reject) => {
-            fs.readFile('airport/airports.json', (err, data) => {
+            fs.readFile('../data/airports.json', (err, data) => {
                 if (err) return reject(err)
 
                 const airports = JSON.parse(String(data))

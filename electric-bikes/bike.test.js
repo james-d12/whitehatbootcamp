@@ -25,6 +25,9 @@ describe('Bike', () => {
         const b1 = new Bike(100)
         b1.useBike(100)
 
+        expect(b1.charge).toEqual(95)
+
+        b1.useBike(10000)
         expect(b1.charge).toEqual(0)
     }); 
 });

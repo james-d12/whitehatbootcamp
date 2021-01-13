@@ -1,5 +1,5 @@
-const Plane = require('./Plane');
-const Airport = require('./Airport');
+const Plane = require('../classes/Plane');
+const Airport = require('../classes/Airport');
 
 describe('Airport', () => {
     test('Airport Land', () => {

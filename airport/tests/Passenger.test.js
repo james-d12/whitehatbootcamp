@@ -1,11 +1,7 @@
-const Bag = require('./Bag');
-const Passenger = require('./Passenger')
+const Bag = require('../classes/Bag');
+const Passenger = require('../classes/Passenger')
 
 describe('Passenger', () => {
-    test('Passenger Constructor', () => {
-        expect(() => new Passenger()).toThrowError("Passenger must have a name!");
-    });
-
     test('Passenger Data', () => {
         const p1 = new Passenger("James")
         expect(p1.name).toEqual("James")

@@ -1,15 +1,15 @@
+const Person = require('./Person')
 const Bag = require('./Bag')
 
-class Passenger {
+/** Passenger class - has luggage and inherits from person. */
+class Passenger extends Person{
 
     /**
      * 
      * @param {String} name - The name of the Passenger 
      */
     constructor(name){
-        if (!name) { throw new Error("Passenger must have a name!"); }
-
-        this.name = name 
+        super(name)
         this.bags = [] 
     }
 
@@ -17,8 +17,10 @@ class Passenger {
      * 
      * @param {Bag} bag - Adds a Bag object to the passenger.
      */
-    addBag(bag){
-        this.bags.push(bag)
+    addBag(...bags){
+        bags.forEach(bag => {
+            this.bags.push(bag)
+        });
     }
 
     /**
@@ -37,5 +39,8 @@ class Passenger {
         return this.bags.length;
     }
 }
+
+const p = new Passenger("james")
+p.addBag(25, 35, 45)
 
 module.exports = Passenger

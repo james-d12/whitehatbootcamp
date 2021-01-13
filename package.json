@@ -4,7 +4,8 @@
   "description": "Contains code for the bootcamp.",
   "main": "person.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:report": "jest --coverage=true"
   },
   "repository": {
     "type": "git",

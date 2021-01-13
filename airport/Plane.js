@@ -16,7 +16,7 @@ class Plane {
      * @param {Array<Passenger>} passengers - The passengers to board.
      */
     boardPassengers(passengers){
-        this.passengers = passengers
+        this.passengers.concat(passengers)
         this.passengers.forEach(passenger => {
             console.log(passenger.name + " is boarding plane:" + this.flightNumber)
         });
@@ -38,13 +38,5 @@ class Plane {
         return this.passengers.length
     }
 }
-
-const p = new Plane("Heathrow Airport", "Luton Airport", "0A2FD")
-p.boardPassengers([
-    new Passenger("Jake"),
-    new Passenger("Jack")
-])
-
-console.log(p.numOfPasengers())
 
 module.exports = Plane

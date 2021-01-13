@@ -1,8 +1,13 @@
 const Plane = require('./Plane')
+const fs = require('fs')
+
 class Airport {
+    static airports = []
+
     constructor(name){
         this.name = name
         this.planes = []
+        this.constructor.airports.push(this)
     }
 
     /**
@@ -16,29 +21,28 @@ class Airport {
 
     /**
      * 
-     * @param {Plane} plane - Plane to takeoff.
+     * @param {Name} name - Name of the airport 
+     * @returns {Airport} - Returns the airport with the name.
      */
-    takeOffPlane(flightNumber){
-        this.planes.forEach(plane => {
-            if (plane.flightNumber == flightNumber){
-                const index = this.planes.indexOf(plane)
-                console.log("Flight:", plane.flightNumber, "has taken off from ", this.name, "to:", plane.destination)
-                this.planes.splice(index, 1)
+    findAirport(name){
+        this.constructor.airports.forEach(airport => {
+            if (airport.name === name){
+                return airport 
             }
-        });
+        })
     }
 
     /**
      * 
-     * @param {String} flightNumber - The flight number to display details.
+     * @param {Plane} plane - Flight number of plane to take off.
      */
-
-    details(flightNumber){
-        this.planes.forEach(plane => {
-            if (plane.flightNumber == flightNumber){
-                console.log("Flight Number:", plane.flightNumber)
-                console.log("Flight Origin:", this.name)
-                console.log("Flight Destination:", plane.destination)
+    takeOffPlane(plane){
+        const index = this.planes.indexOf(plane)
+        console.log("Flight:", plane.flightNumber, "has taken off from ", this.name, "to:", plane.destination)
+        this.planes.splice(index, 1)
+        this.constructor.airports.forEach(airport => {
+            if (airport.name === plane.destination){
+                airport.landPlane(plane)
             }
         })
     }
@@ -50,13 +54,21 @@ class Airport {
         return this.planes.length;
     }
 
+    /**
+     * @returns {Airport} - Returns an airport.
+     */
+    getInfo() {
+        return new Promise((resolve, reject) => {
+            fs.readFile('airport/airports.json', (err, data) => {
+                if (err) return reject(err)
 
+                const airports = JSON.parse(String(data))
+                const [airport] = Object.keys(airports).filter(airportCode => airports[airportCode].iata === this.name).map(airportCode => airports[airportCode])
+                resolve(airport)
+            })
+        });
+    }
 
 }
-
-const heathrow = new Airport("Heathrow Airport")
-heathrow.landPlane(new Plane("Heathrow Airport", "Luton Airport", "0AS23DF"))
-heathrow.takeOffPlane("0AS23DF")
-
 
 module.exports = Airport

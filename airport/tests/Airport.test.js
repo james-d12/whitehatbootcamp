@@ -2,14 +2,14 @@ const Plane = require('../classes/Plane');
 const Airport = require('../classes/Airport');
 
 describe('Airport', () => {
-    test('Airport Land', () => {
+    test('Airport Land Plane', () => {
         const p = new Plane("Heathrow Airport", "Luton Airport", "0A2DF4")
         const h = new Airport("Heathrow Airport")
         h.landPlane(p)
         expect(h.numOfPlanes()).toEqual(1)
     })
 
-    test('Airport Take Off', () => {
+    test('Airport Take Off Plane', () => {
         const p = new Plane("Heathrow Airport", "Luton Airport", "0A2DF4")
         const h = new Airport("Heathrow Airport")
         h.landPlane(p)
@@ -18,13 +18,34 @@ describe('Airport', () => {
         expect(h.planes).toHaveLength(0)
     })
 
-    test('Airport Find', () => {
+    test('Airport Find Airport That Exists', () => {
         const p = new Plane("Heathrow Airport", "Luton Airport", "0A2DF4")
         const h1 = new Airport("LHR")
         const h2 = new Airport("LLA")
 
-        expect(h1.findAirport("LLA")).toStrictEqual(h2)
+        const result = h1.findAirport("LLA")
+        expect(result).toStrictEqual(h2)
+    })
 
+    test('Airport Find Airport That Doesnt Exist', () => {
+        const p = new Plane("Heathrow Airport", "Luton Airport", "0A2DF4")
+        const h1 = new Airport("LHR")
+        const h2 = new Airport("LLA")
+
+        const result = h1.findAirport("LLL")
+        expect(result).toBeInstanceOf(Error)
+    })
+
+    test('Airport GetInfo That Exists', async () => {
+        const AIR = new Airport("London Heathrow Airport")
+        const result = await AIR.getInfo()
+        expect(result.name).toEqual("London Heathrow Airport")
+    })
+
+    test('Airport GetInfo That Doesnt Exist', async () => {
+        const AIR = new Airport("airport that doesnt exist")
+        const result = await AIR.getInfo()
+        expect(result.name).toEqual("")
     })
 
     test('Airport City Info', async () => {

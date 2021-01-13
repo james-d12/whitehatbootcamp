@@ -1,4 +1,4 @@
-const Bike = require('./Bike')
+const Bike = require('../classes/Bike')
 
 describe('Bike', () => {
     test('Bike canRideBike With No Charge', () => {

@@ -30,11 +30,11 @@ class Airport {
      */
     findAirport(name){
         this.constructor.airports.forEach(airport => {
-            if (airport.name === name){
-                console.log("FOUND AIRPORT WITH NAME")
+            if (airport.name == name){
                 return airport 
             }
         })
+        return new Error(`Could not find an airport with the name: ${name}`)
     }
 
     /**
@@ -70,9 +70,16 @@ class Airport {
 
                 const airports = JSON.parse(String(data))
                 const [airport] = Object.keys(airports).filter(airportCode => airports[airportCode].iata === this.name).map(airportCode => airports[airportCode])
+
+                if (airport == undefined) { reject(new Airport("")) }
+
                 resolve(airport)
             })
         });
+    }
+
+    getInfoWithCallback(){
+
     }
 
 }

@@ -4,42 +4,43 @@ const bikeMultiplier = 0.05
 class Bike{
 
     /**
-     * 
-     * @param {Charge} charge - The initial charge level. 
+     * @param {Number} charge - The initial charge level. 
      */
     constructor(charge=100){
         if (charge > 100) { charge = 100 }
         this.charge = charge
+        this.id = this.generateID()
     }
 
-    /**
-     * 
-     * @param {Number} chargeLevel - The chargeLevel to set.
-     * @param {String} message - Message to display.
-     * @param {Number} timer - Time to complete.
-     */
-    __helper(chargeLevel, message, timer){
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                this.charge = chargeLevel
-                console.log(message)
-                resolve('resolved')
-            }, timer);
-        }); 
+    generateID(){
+        let id = ""
+        for(let i = 0; i < 6; i++){
+            const num = Math.round(Math.random() * (90 - 65) + 65)
+            id += String.fromCharCode(num)
+        }
+        return id 
     }
 
     /**
      * @returns {Promise} - Returns a promise on whether the bike has been charged or not.
      */
     async chargeBike(){
-        return await this.__helper(100, "Bike now charged!", 2000)
+        if(this.charge >= 100) { return }
+
+        return new Promise((resolve , reject) => {
+            setInterval(() => {
+                this.charge = 100
+                console.log( `Bike: ${this.id} now fully charged!`)
+                resolve('resolved')
+            }, 2000);
+        }); 
     }
 
     /**
      * 
      * @param {Number} distance - The distance (in metres) to ride the bike for.
      */
-    distanceCanRide(distance){
+    distanceCanRide(){
         return (this.charge / bikeMultiplier)
     }
 
@@ -64,11 +65,6 @@ class Bike{
         if (this.charge <= 0) { this.charge = 0}
     }
 }
-
-const user = new User("James") 
-const bike = new Bike()
-
-bike.useBike(100)
 
 module.exports = Bike
 

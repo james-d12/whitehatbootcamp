@@ -41,6 +41,13 @@ class Plane {
     numOfPasengers(){
         return this.passengers.length
     }
+
+    /**
+     * @returns {Number} crew.length - the number of crew members.
+     */
+    numOfCrew(){
+        return this.crew.length
+    }
 }
 
 module.exports = Plane

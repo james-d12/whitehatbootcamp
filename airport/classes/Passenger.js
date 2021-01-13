@@ -39,8 +39,4 @@ class Passenger extends Person{
         return this.bags.length;
     }
 }
-
-const p = new Passenger("james")
-p.addBag(25, 35, 45)
-
 module.exports = Passenger

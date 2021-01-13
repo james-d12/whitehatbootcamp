@@ -18,7 +18,7 @@ class BikeHire{
 
     hireBike(){
         this.bikes.forEach(bike => {
-            if(bike.chargeLevel == 100){
+            if(bike.charge == 100){
                 const index = this.bikes.indexOf(bike)
                 this.bikes.splice(index, 1)
                 return bike 
@@ -37,13 +37,19 @@ class BikeHire{
 
 let bikes = []
 
-for (let index = 0; index < 5; ++index) {
-    const b = new Bike(Math.round(Math.random() * 100))
+let charge = 0
+for (let index = 0; index < 10; ++index) {
+    if (index % 3 == 0) { charge = 100 }
+    else { charge = Math.round(Math.random() * 100)}
+    const b = new Bike(charge)
     bikes.push(b)
 }
 
 const bh = new BikeHire(bikes)
 const user = new User("james")
 
-user.hireBike(bh.hireBike())
-bh.printBikes()
+availableBike = bh.hireBike()
+
+
+console.log("bike: " + availableBike)
+

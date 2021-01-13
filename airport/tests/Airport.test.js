@@ -22,6 +22,7 @@ describe('Airport', () => {
         const p = new Plane("Heathrow Airport", "Luton Airport", "0A2DF4")
         const h1 = new Airport("LHR")
         const h2 = new Airport("LLA")
+
         expect(h1.findAirport("LLA")).toStrictEqual(h2)
 
     })

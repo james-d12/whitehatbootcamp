@@ -12,25 +12,27 @@ class Plane {
         this.destination = destination
         this.flightNumber = flightNumber
         this.passengers=[]
+        this.crew = []
     }
 
-    /**
-     * @param {Array<Passenger>} passengers - The passengers to board.
-     */
-    boardPassengers(passengers){
+    addPassengers(...passengers){
         passengers.forEach(passenger => {
-            console.log(passenger.name + " is boarding plane:" + this.flightNumber)
             this.passengers.push(passenger)
-        });
+        })
+    }
+    addCrew(...crew){
+        crew.forEach(crewMember => {
+            this.crew.push(crewMember)
+        })
     }
 
-    /**
-     * 
-     * @param {Passenger} passenger - The passenger to board.
-     */
-    boardPassenger(passenger){
-        this.passengers.push(passenger)
-        console.log(passenger.name + " is boarding plane:" + this.flightNumber)
+    board(){
+        this.passengers.forEach(passenger => {
+            console.log(`[PASSENGER] ${passenger.name} is boarding plane: ${this.flightNumber}`)
+        })
+        this.crew.forEach(crewMember => {
+            console.log(`[CREW] ${crewMember.name} is boarding plane: ${this.flightNumber}`)
+        })
     }
 
     /**

@@ -4,6 +4,10 @@ const fs = require('fs')
 class Airport {
     static airports = []
 
+    /**
+     * 
+     * @param {String} name - The name of the airport. 
+     */
     constructor(name){
         this.name = name
         this.planes = []
@@ -27,6 +31,7 @@ class Airport {
     findAirport(name){
         this.constructor.airports.forEach(airport => {
             if (airport.name === name){
+                console.log("FOUND AIRPORT WITH NAME")
                 return airport 
             }
         })
@@ -60,7 +65,7 @@ class Airport {
      */
     getInfo() {
         return new Promise((resolve, reject) => {
-            fs.readFile('../data/airports.json', (err, data) => {
+            fs.readFile('airport/data/airports.json', (err, data) => {
                 if (err) return reject(err)
 
                 const airports = JSON.parse(String(data))

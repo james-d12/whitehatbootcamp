@@ -49,7 +49,5 @@ const bh = new BikeHire(bikes)
 const user = new User("james")
 
 availableBike = bh.hireBike()
-
-
 console.log("bike: " + availableBike)
 

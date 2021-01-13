@@ -31,7 +31,7 @@ class Airport {
     findAirport(name){
         this.constructor.airports.forEach(airport => {
             if (airport.name == name){
-                return airport 
+                return airport
             }
         })
         return new Error(`Could not find an airport with the name: ${name}`)

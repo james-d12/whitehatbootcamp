@@ -1,0 +1,10 @@
+@startuml
+
+actor Customer
+actor SalesPerson
+Customer -> SalesPerson: is scooter available
+SalesPerson -> ScooterHireSystem: login
+SalesPerson -> ScooterHireSystem: get list of free scooters.
+ScooterHireSystem -> SalesPerson: list of free scooters
+
+@enduml

@@ -22,10 +22,10 @@ class Airport {
         console.log("Flight:", plane.flightNumber, "has landed at:", this.name)
         this.planes.push(plane)
     }
-
+jsdo
     /**
      * 
-     * @param {Name} name - Name of the airport 
+     * @param {String} name - Name of the airport 
      * @returns {Airport} - Returns the airport with the name.
      */
     findAirport(name){
@@ -76,10 +76,6 @@ class Airport {
                 resolve(airport)
             })
         });
-    }
-
-    getInfoWithCallback(){
-
     }
 
 }

@@ -11,11 +11,19 @@ describe('Airport', () => {
 
     test('Airport Take Off Plane', () => {
         const p = new Plane("Heathrow Airport", "Luton Airport", "0A2DF4")
+        const h2 = new Airport("Luton Airport")
         const h = new Airport("Heathrow Airport")
         h.landPlane(p)
         expect(h.planes).toHaveLength(1)
         h.takeOffPlane(p)
         expect(h.planes).toHaveLength(0)
+        expect(h2.planes[0].flightNumber).toEqual("0A2DF4")
+    })
+
+    test('Airport Find Airport Error', () => {
+        const h = new Airport("Heathrow Airport")
+
+        expect(h.findAirport("asdads")).toBeInstanceOf(Error)
     })
 
     test('Airport City Info', async () => {

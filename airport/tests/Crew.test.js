@@ -1,8 +1,10 @@
 const Crew = require('../classes/Crew')
 
 describe('Crew', () => {
-    test('Crew Constructor', () => {
+    test('Crew Constructor Error', () => {
         expect(() => new Crew()).toThrowError("Person must have a name!")
-        expect(() => new Crew("Jack")).toBeDefined()
     });
+    test('Crew Constructor Success', () => {
+        expect(() => new Crew("Jack")).toBeDefined()
+    })
 })

@@ -7,7 +7,9 @@ class Plane {
      * @param {String} destination - The destination airport.
      * @param {String} flightNumber - The flight number.
      */
-    constructor(origin, destination, flightNumber){
+    constructor(origin="", destination="", flightNumber){
+        if(!flightNumber) { throw new Error("Plane must have a flight number!");}
+
         this.origin = origin
         this.destination = destination
         this.flightNumber = flightNumber
@@ -31,7 +33,7 @@ class Plane {
             console.log(`[PASSENGER] ${passenger.name} is boarding plane: ${this.flightNumber}`)
         })
         this.crew.forEach(crewMember => {
-            console.log(`[CREW] ${crewMember.name} is boarding plane: ${this.flightNumber}`)
+            console.log(`[CREW] ${crewMember.name} is boarding plane: ${this.flightNumber}`)  
         })
     }
 

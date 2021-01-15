@@ -18,7 +18,6 @@ class ElectricScooter extends Scooter {
     drive(distance){
         distance = Math.abs(distance)
         super.use(distance)
-        
         const decharge = distance * super.getDistanceMultiplier()
         this.chargeLevel -= decharge
         if (this.chargeLevel <= 0) { this.chargeLevel = 0}

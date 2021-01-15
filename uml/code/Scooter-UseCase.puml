@@ -1,13 +1,24 @@
-@startuml
+@startuml Scooter Use Case
 
-left to right
-actor "Customer"
+left to right direction
+actor Customer
 
 rectangle ScooterHireSystem {
     usecase "Hire Scooter" as UC1
-    usecase "Return Scooter" as UC2
-    usecase "Charge Scooter" as UC3
     usecase "Drive Scooter" as UC4 
+    usecase "Charge Scooter" as UC3
+    usecase "Return Scooter" as UC2
 }
+
+rectangle ChargeStation {
+    usecase "Find Nearest Station" as UC1
+    usecase "Add Scooter" as UC2 
+    usecase "Charge Scooters" as UC3 
+}
+
+customer -> UC1 
+customer -> UC2
+customer -> UC3 
+customer -> UC4 
 
 @enduml

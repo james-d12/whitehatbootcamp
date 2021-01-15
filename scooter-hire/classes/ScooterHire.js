@@ -15,6 +15,7 @@ class ScooterHire{
     addScooter(scooter){
         this.scooters.push(scooter)
         if(scooter.chargeLevel == 100) { this.scootersAvailable.push(scooter); }
+        else { this.chargeStation.addScooter(scooter); }
     }
 
     chargeScooters(){
@@ -37,11 +38,9 @@ class ScooterHire{
 
     }
     returnScooterFrom(customer){
-        if(!customer.hasScooter()) { console.log("Customer does not have a scooter to return."); return; }
+        if(!customer.hasScooter()) { console.log(`Customer: ${customer.fullName} does not have a scooter to return.`); return; }
 
         let scooter = customer.returnScooter()
-
-        
 
         delete this.currentlyHired[customer.fullName]
         this.scooters.push(scooter) 
@@ -51,6 +50,9 @@ class ScooterHire{
         console.log(`${customer.fullName} has returned their scooter.`)
     }
 
+    currentlyHired(){
+
+    }
 }
 
 const scooterHire = new ScooterHire();
@@ -59,13 +61,17 @@ let scooters = []
 let customers = []
 
 for(let i = 0; i < 100; i++){    
-    scooters.push(new ElectricScooter(Math.round(Utility.random(1, 200)), Math.round(Utility.random(50, 100))))
+    scooters.push(new ElectricScooter(Math.round(Utility.random(1, 200)), Math.round(Utility.random(80, 100))))
     scooterHire.addScooter(scooters[i])
 }
 
-for(let i = 0; i < 5; i++){
-    const name = "Jack" + String.fromCharCode(Utility.random(97,122))
-    customers.push(new Customer(name, "", 300))
-}
+customers.push(new Customer("James", "Durban", 400))
 
 scooterHire.hireScooterTo(customers[0])
+
+
+customers[0].driveScooterFor(56008)
+
+console.log(scooterHire.currentlyHired)
+scooterHire.returnScooterFrom(customers[0])
+

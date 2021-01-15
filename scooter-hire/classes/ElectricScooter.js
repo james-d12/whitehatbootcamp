@@ -5,17 +5,20 @@ class ElectricScooter extends Scooter {
         this.chargeLevel = chargeLevel
     }
 
-    distanceCanRide(){
+    distanceCanDrive(){
         return (this.chargeLevel / super.distanceMultiplier())
     }
 
-    canRideFor(distance){
+    canDriveFor(distance){
         distance = Math.abs(distance)
-        const availableDistance = this.distanceCanRide(distance)
+        const availableDistance = this.distanceCanDrive(distance)
         return (availableDistance < distance ? false : true)
     }
 
-    ride(distance){
+    drive(distance){
+
+        
+
         distance = Math.abs(distance)
         super.use(distance)
         

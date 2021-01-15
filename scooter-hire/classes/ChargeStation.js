@@ -1,6 +1,5 @@
 const Utility = require('./Utility')
 const ElectricScooter = require('./ElectricScooter')
-const Scooter = require('./Scooter')
 
 /** ChargeStations charge electric scooters. */
 class ChargeStation {
@@ -31,7 +30,7 @@ class ChargeStation {
      * @returns {Promise} - Returns a promise on whether the Scooter was charged or not. 
      */
     async chargeScooters(){
-        this.scootersCharging.forEach(scooter => {
+        this.scootersCharging.forEach((scooter, i) => {
             console.log(`Scooter: ${scooter.id} is charging at: ${this.locationName}.`)
             return new Promise((resolve , reject) => {
                 setTimeout(() => {
@@ -40,7 +39,7 @@ class ChargeStation {
 
                     console.log( `Scooter: ${scooter.id} is now fully charged!`)
                     resolve('resolved')
-                }, 2000);
+                }, Utility.random(0,10) * 1000);
             }); 
         });
     }

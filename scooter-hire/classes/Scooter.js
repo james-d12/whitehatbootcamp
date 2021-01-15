@@ -10,7 +10,7 @@ class Scooter {
      * @param {Float} cost - The cost of the scooter. 
      */
     constructor(cost=0){
-        this.cost = cost
+        this.cost = Math.abs(cost)
         this.id = Utility.generateID(6)
     }
 

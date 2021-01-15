@@ -20,7 +20,7 @@ class ElectricScooter {
     + ElectricScooter(Float cost, Int chargeLevel)
     + Int  distanceCanRide()
     + Bool canRideDistance(Int distance)
-    + void chargeBike()
+    + void chargeScooter()
     + Int getChargeLevel()
     + void setChargeLevel(Int chargeLevel)
 }
@@ -58,9 +58,8 @@ class ScooterHire {
     
     + void chargeScooters();
     + void addScooter(Scooter scooter);
-    + Bike hireScooterTo(Customer cust);
-    + void returnScooterFrom(Customer cust);
-    
+    + Scooter hireScooterTo(Customer cust);
+    + void returnScooterFrom(Customer cust);   
 }
 
 ScooterHire "1" -- "Many" Scooter

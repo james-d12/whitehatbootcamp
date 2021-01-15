@@ -1,9 +1,0 @@
-@startuml ScooterHire
-
-actor Customer
-Customer -> ScooterHireSystem: is scooter available?
-ScooterHireSystem -> Customer: yes.
-Customer -> ScooterHireSystem: purchase scooter. 
-ScooterHireSystem -> Customer: give scooter.
-
-@enduml

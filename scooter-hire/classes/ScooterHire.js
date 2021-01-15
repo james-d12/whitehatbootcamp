@@ -2,6 +2,7 @@ const Utility = require('./Utility')
 const ChargeStation = require('./ChargeStation')
 const Customer = require('./Customer')
 const ElectricScooter = require('./ElectricScooter')
+const Scooter = require('./Scooter')
 
 class ScooterHire{
     constructor(){
@@ -49,29 +50,6 @@ class ScooterHire{
 
         console.log(`${customer.fullName} has returned their scooter.`)
     }
-
-    currentlyHired(){
-
-    }
 }
 
-const scooterHire = new ScooterHire();
-
-let scooters = []
-let customers = []
-
-for(let i = 0; i < 100; i++){    
-    scooters.push(new ElectricScooter(Math.round(Utility.random(1, 200)), Math.round(Utility.random(80, 100))))
-    scooterHire.addScooter(scooters[i])
-}
-
-customers.push(new Customer("James", "Durban", 400))
-
-scooterHire.hireScooterTo(customers[0])
-
-
-customers[0].driveScooterFor(56008)
-
-console.log(scooterHire.currentlyHired)
-scooterHire.returnScooterFrom(customers[0])
-
+module.exports = ScooterHire

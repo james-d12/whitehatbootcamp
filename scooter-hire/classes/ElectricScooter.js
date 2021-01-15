@@ -1,12 +1,12 @@
 const Scooter = require('./Scooter')
 class ElectricScooter extends Scooter {
-    constructor(cost, chargeLevel=100){
+    constructor(cost, chargeLevel=0){
         super(cost)
         this.chargeLevel = chargeLevel
     }
 
     distanceCanDrive(){
-        return (this.chargeLevel / super.distanceMultiplier())
+        return (this.chargeLevel / super.getDistanceMultiplier())
     }
 
     canDriveFor(distance){
@@ -16,13 +16,10 @@ class ElectricScooter extends Scooter {
     }
 
     drive(distance){
-
-        
-
         distance = Math.abs(distance)
         super.use(distance)
         
-        const decharge = distance * super.distanceMultiplier()
+        const decharge = distance * super.getDistanceMultiplier()
         this.chargeLevel -= decharge
         if (this.chargeLevel <= 0) { this.chargeLevel = 0}
     }

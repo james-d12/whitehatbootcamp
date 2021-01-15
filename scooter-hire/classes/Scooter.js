@@ -18,7 +18,7 @@ class Scooter {
      * Returns the distance Multiplier variable.
      * @returns {Float} - Returns the distance multiplier variable.
      */
-    distanceMultiplier(){
+    getDistanceMultiplier(){
         return this.constructor.distanceMultiplier
     }
 

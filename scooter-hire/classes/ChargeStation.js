@@ -34,7 +34,7 @@ class ChargeStation {
             console.log(`Scooter: ${scooter.id} is charging at: ${this.locationName}.`)
             return new Promise((resolve , reject) => {
                 setTimeout(() => {
-                    scooter.chargeLevel = 100
+                    scooter.setChargeLevel(100)
                     if(scooter.chargeLevel != 100) { reject("Reject")}
 
                     console.log( `Scooter: ${scooter.id} is now fully charged!`)

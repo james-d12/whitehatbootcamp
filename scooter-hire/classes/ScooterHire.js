@@ -31,10 +31,8 @@ class ScooterHire{
             this.currentlyHired[customer.fullName] = scooter.id
             customer.purchaseScooter(scooter)
             this.customers.push(customer)
-        }
-
-        if(!customer.hasScooter()){
-            console.log(`Could not find a scooter that was available for hire for ${customer.fullName}.`)
+        } else{
+            console.log(`${customer.fullName} cannot afford scooter [${scooter.id}], they are short £${scooter.cost - customer.money}.`)
         }
 
     }
@@ -48,7 +46,7 @@ class ScooterHire{
         if (this.scooters.chargeLevel == 100 ) { this.scootersAvailable.push(scooter)}
         else { this.chargeStation.addScooter(scooter) }
 
-        console.log(`${customer.fullName} has returned their scooter.`)
+        console.log(`${customer.fullName} has returned scooter [${scooter.id}].`)
     }
 }
 

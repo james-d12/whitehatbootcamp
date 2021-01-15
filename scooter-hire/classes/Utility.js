@@ -1,4 +1,4 @@
-function generateID(length=8){
+function generateID(length){
     let id = ""
     for(let i = 0; i < length; i++){
         const num = Math.round(Math.random() * (90 - 65) + 65)

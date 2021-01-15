@@ -27,7 +27,7 @@ class ElectricScooter extends Scooter {
     setChargeLevel(chargeLevel){
         if (chargeLevel > 100) { this.chargeLevel = 100}
         else if (chargeLevel < 0) { this.chargeLevel = 0}
-        else { chargeLevel = chargeLevel }
+        else { this.chargeLevel = chargeLevel }
     }
 }
 

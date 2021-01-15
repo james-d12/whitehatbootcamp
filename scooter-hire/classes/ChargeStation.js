@@ -22,6 +22,7 @@ class ChargeStation {
 
 
     addScooter(scooter){
+        if(scooter.chargeLevel == 100) { console.log("Scooter is already fully charged!"); return; }
         this.scootersCharging.push(scooter)
     }
 
@@ -52,10 +53,12 @@ class ChargeStation {
     getChargingStation(locationName){
         this.constructor.chargingStations.forEach(cs => {
             if(locationName == cs.locationName){
-                return cs 
+                return 
             }
         });
-        return new Error(`Could not find a charging station with the name: ${locationName}.`)
+        
+        console.log(`Could not find a charging station with the name: ${locationName}.`)
+        return
     }
 
     /**

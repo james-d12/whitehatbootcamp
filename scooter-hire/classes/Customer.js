@@ -45,6 +45,8 @@ class Customer {
      * @param {Scooter} scooter - The scooter to purchase. 
      */
     purchaseScooter(scooter){
+        if(!this.canAffordScooter(scooter)) { return; }
+
         this.money -= scooter.cost 
         this.scooter = scooter 
         console.log(`${this.fullName} has purchased scooter [${scooter.id}] for: £${scooter.cost}`)

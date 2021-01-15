@@ -1,0 +1,9 @@
+@startuml ChargeStation
+
+actor Customer
+Customer -> ChargeStation: is room available for scooter?
+ChargeStation -> Customer: yes.
+Customer -> ChargeStation: give scooter.
+Customer -> ChargeStation: is scooter charged?
+
+@enduml

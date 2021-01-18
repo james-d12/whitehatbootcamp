@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: ChargeStation</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: ChargeStation</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>ChargeStation<span class="signature">(locationName, lat, lon)</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">ChargeStation stores a list of currently charging bikes and allows bikes to be charged.</div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    
+    <h4 class="name" id="ChargeStation"><span class="type-signature"></span>new ChargeStation<span class="signature">(locationName, lat, lon)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Constructs a ChargeStation Object with the specified parameters.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>locationName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The location name of the charging station.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The latitude of the station's position.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lon</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The longitude of the station's position.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A unique id of the charging station.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>locationName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the location of where the charging station is.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The latitude coordinate of the charging station.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lon</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The longitude coordinate of the charging station.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>scootersCharging</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="ElectricScooter.html">ElectricScooter</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">An array of current scooters that are charging.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scooter-hire_classes_ChargeStation.js.html">scooter-hire/classes/ChargeStation.js</a>, <a href="scooter-hire_classes_ChargeStation.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="addScooter"><span class="type-signature"></span>addScooter<span class="signature">(scooter)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Adds a given scooter to the charging station to charge.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>scooter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="ElectricScooter.html">ElectricScooter</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The scooter to add to the charging station.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scooter-hire_classes_ChargeStation.js.html">scooter-hire/classes/ChargeStation.js</a>, <a href="scooter-hire_classes_ChargeStation.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="chargeScooters"><span class="type-signature"></span>chargeScooters<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Goes through each scooter in the charging station and attempts to charge them.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scooter-hire_classes_ChargeStation.js.html">scooter-hire/classes/ChargeStation.js</a>, <a href="scooter-hire_classes_ChargeStation.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns a promise on whether the Scooter was charged or not.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getChargingStation"><span class="type-signature"></span>getChargingStation<span class="signature">(id)</span><span class="type-signature"> &rarr; {ChargingStation}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns the instance of the charging station that matches the location name.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The ID of the charging station to get.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scooter-hire_classes_ChargeStation.js.html">scooter-hire/classes/ChargeStation.js</a>, <a href="scooter-hire_classes_ChargeStation.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns the charging station with the given location name.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">ChargingStation</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getNearestChargingStation"><span class="type-signature"></span>getNearestChargingStation<span class="signature">(lat, lon)</span><span class="type-signature"> &rarr; {<a href="ChargeStation.html">ChargeStation</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Locates the nearest charging station based on the given lat/lon coordinates.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>lat</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The latitude coordinates of your position.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lon</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Float</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The longitude coordinates of your position.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="scooter-hire_classes_ChargeStation.js.html">scooter-hire/classes/ChargeStation.js</a>, <a href="scooter-hire_classes_ChargeStation.js.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Returns the nearest charge station.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="ChargeStation.html">ChargeStation</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Airport.html">Airport</a></li><li><a href="Bag.html">Bag</a></li><li><a href="ChargeStation.html">ChargeStation</a></li><li><a href="Crew.html">Crew</a></li><li><a href="Customer.html">Customer</a></li><li><a href="ElectricScooter.html">ElectricScooter</a></li><li><a href="Passenger.html">Passenger</a></li><li><a href="Person.html">Person</a></li><li><a href="Plane.html">Plane</a></li><li><a href="Scooter.html">Scooter</a></li><li><a href="ScooterHire.html">ScooterHire</a></li></ul><h3>Global</h3><ul><li><a href="global.html#generateID">generateID</a></li><li><a href="global.html#random">random</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Jan 18 2021 14:15:13 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

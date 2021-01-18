@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: scooter-hire/classes/ScooterHire.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: scooter-hire/classes/ScooterHire.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Utility = require('./Utility')
+const ChargeStation = require('./ChargeStation')
+const Customer = require('./Customer')
+const ElectricScooter = require('./ElectricScooter')
+const Scooter = require('./Scooter')
+
+
+/**
+ * A scooterhire station where customers can hire/returns scooters.
+ * @property {Array&lt;ElectricScooter>} scooter - The list of current scooters
+ * @property {Array&lt;ElectricScooter>} scootersAvailable - The list of current available / fully charged scooters
+ * @property {ChargeStation} chargeStation - An internal chargestation to charge current scooters.
+ * @property {Dictionary} currentlyHired - A dictionary storing the customers full name as a key to the ID of the scooter.
+ */
+class ScooterHire{
+
+    /**
+     * Constructs a ScooterHire Object.
+     */
+    constructor(){
+        this.scooters = []
+        this.scootersAvailable = []
+        this.chargeStation = new ChargeStation("Internal Charge Station", 0, 0)
+        this.currentlyHired = {}
+    }
+
+    /**
+     * Adds a scooter to the system.
+     * @param {ElectricScooter} scooter - The scooter to add.
+     */
+    addScooter(scooter){
+        this.scooters.push(scooter)
+        if(scooter.chargeLevel == 100) { this.scootersAvailable.push(scooter); }
+        else { this.chargeStation.addScooter(scooter); }
+    }
+
+    /**
+     * Adds all scooter in an array of scooters.
+     * @param {Array&lt;ElectricScooter>} scooters 
+     */
+    addScooters(scooters){
+        for(let i = 0; i &lt; scooters.length; i++){
+            this.addScooter(scooters[i])
+        }
+    }
+
+    /**
+     * Uses the internal charge station to charge all the current scooters that need charging.
+     */
+    chargeScooters(){ 
+        this.chargeStation.chargeScooters().then(data => {
+            this.chargeStation.scootersCharging.forEach(scooter => {
+                if(scooter.chargeLevel == 100){
+                    this.scootersAvailable.push(scooter)
+                }
+            })
+        })
+    }
+
+    /**
+     * 
+     * @param {Customer} customer - The customer to hire the scooter to.
+     */
+    hireScooterTo(customer){
+        if(this.scootersAvailable.length &lt;= 0) { console.log(`There are no available scooters for hire.`); return; }
+        
+        let scooter = this.scootersAvailable[this.scootersAvailable.length-1]
+        
+        if(customer.canAffordScooter(scooter)){
+            this.currentlyHired[customer.fullName] = scooter.id
+            customer.purchaseScooter(scooter)
+            this.scootersAvailable.pop()
+        } else{
+            console.log(`${customer.fullName} cannot afford scooter [${scooter.id}], they are short £${scooter.cost - customer.money}.`)
+        }
+
+    }
+
+    /**
+     * 
+     * @param {Customer} customer - The customer to get the scooter from.
+     */
+    returnScooterFrom(customer){
+        if(!customer.hasScooter()) { console.log(`Customer: ${customer.fullName} does not have a scooter to return.`); return; }
+
+        let scooter = customer.returnScooter()
+
+        delete this.currentlyHired[customer.fullName]
+        this.scooters.push(scooter) 
+        if (scooter.chargeLevel == 100 ) { this.scootersAvailable.push(scooter)}
+        else { this.chargeStation.addScooter(scooter); }
+
+        console.log(`${customer.fullName} has returned scooter [${scooter.id}].`)
+    }
+}
+
+module.exports = ScooterHire
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Airport.html">Airport</a></li><li><a href="Bag.html">Bag</a></li><li><a href="ChargeStation.html">ChargeStation</a></li><li><a href="Crew.html">Crew</a></li><li><a href="Customer.html">Customer</a></li><li><a href="ElectricScooter.html">ElectricScooter</a></li><li><a href="Passenger.html">Passenger</a></li><li><a href="Person.html">Person</a></li><li><a href="Plane.html">Plane</a></li><li><a href="Scooter.html">Scooter</a></li><li><a href="ScooterHire.html">ScooterHire</a></li></ul><h3>Global</h3><ul><li><a href="global.html#generateID">generateID</a></li><li><a href="global.html#random">random</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Jan 18 2021 14:15:13 GMT+0000 (Greenwich Mean Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

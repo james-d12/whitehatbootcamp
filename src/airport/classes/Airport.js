@@ -22,19 +22,26 @@ class Airport {
         console.log("Flight:", plane.flightNumber, "has landed at:", this.name)
         this.planes.push(plane)
     }
-jsdo
+
     /**
      * 
      * @param {String} name - Name of the airport 
      * @returns {Airport} - Returns the airport with the name.
      */
     findAirport(name){
+        let res 
         this.constructor.airports.forEach(airport => {
             if (airport.name == name){
-                return airport
+                res = airport
             }
         })
-        return new Error(`Could not find an airport with the name: ${name}`)
+
+        if (res === undefined){
+            return new Error(`Could not find an airport with the name: ${name}`)
+        } else{
+            return res
+        }
+
     }
 
     /**
@@ -71,7 +78,7 @@ jsdo
                 const airports = JSON.parse(String(data))
                 const [airport] = Object.keys(airports).filter(airportCode => airports[airportCode].iata === this.name).map(airportCode => airports[airportCode])
 
-                if (airport == undefined) { reject(new Airport("")) }
+                if (airport == undefined) { return reject(err) }
 
                 resolve(airport)
             })

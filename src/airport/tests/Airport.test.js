@@ -19,12 +19,19 @@ describe('Airport', () => {
         expect(h.planes).toHaveLength(0)
         expect(h2.planes[0].flightNumber).toEqual("0A2DF4")
     })
-
+    test('Airport Find Airport', () => {
+        const h = new Airport("Heathrow Airport")
+        expect(h.findAirport("Heathrow Airport")).toBeInstanceOf(Airport)
+    })
     test('Airport Find Airport Error', () => {
         const h = new Airport("Heathrow Airport")
         expect(h.findAirport("asdads")).toBeInstanceOf(Error)
     })
 
+    test('Airport Info Undefined', async() => {
+        const CDG = new Airport('INVALID')
+        const airport = await CDG.getInfo()
+    })
     test('Airport City Info', async () => {
         const CDG = new Airport('CDG')
         const airport = await CDG.getInfo()

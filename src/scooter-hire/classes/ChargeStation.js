@@ -41,12 +41,11 @@ class ChargeStation {
      * @returns {Promise} - Returns a promise on whether the Scooter was charged or not. 
      */
     chargeScooters(){
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.scootersCharging.forEach((scooter, i) => {
                 console.log(`Scooter: ${scooter.id} is charging at: ${this.locationName}.`)
                     setTimeout(() => {
                         scooter.setChargeLevel(100)
-                        if(scooter.chargeLevel != 100) { reject("Reject")}
                         console.log( `Scooter: ${scooter.id} is now fully charged!`)
                         resolve('resolved')
                     }, 2000);

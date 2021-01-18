@@ -56,19 +56,26 @@ describe('Customer', () => {
     })
     test('Customer Drive Distance', () => {
         const c = new Customer("Harry", "Ronald", 100)
+        console.log = jest.fn()
+
         c.purchaseScooter(new ElectricScooter(100, 100))
         c.driveScooterFor(100)
+        expect(console.log).toHaveBeenCalledWith(`${c.fullName} has driven their scooter for ${100} metres. Current Charge [${c.scooter.chargeLevel}%].`)
         expect(c.scooter.chargeLevel).toEqual(95)
     })
     test('Customer Drive Distance Too Far', () => {
         const c = new Customer("Harry", "Ronald", 100)
+        console.log = jest.fn()
         c.purchaseScooter(new ElectricScooter(100, 10))
         c.driveScooterFor(250)
+        expect(console.log).toHaveBeenCalledWith(`${c.fullName} cannot drive ${250} metres.`)
         expect(c.scooter.chargeLevel).toEqual(10)
     })
     test('Customer Drive Distance With No Scooter', () => {
         const c = new Customer("Harry", "Ronald", 100)
+        console.log = jest.fn()
         c.driveScooterFor(250)
+        expect(console.log).toHaveBeenCalledWith(`${c.fullName} does not have a scooter to drive.`)
         expect(c.scooter).toBeUndefined
     })
     test('Customer Has Scooter', () => {

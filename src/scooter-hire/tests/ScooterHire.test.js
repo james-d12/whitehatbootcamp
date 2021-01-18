@@ -72,7 +72,6 @@ describe('ScooterHire', () => {
         sh.addScooter(sc)
         expect(sh.scootersAvailable).toHaveLength(1)
         sh.hireScooterTo(c)
-
         expect(sh.scootersAvailable).toHaveLength(1)
         expect(Object.keys(sh.currentlyHired)).toHaveLength(0)
     })
@@ -87,16 +86,5 @@ describe('ScooterHire', () => {
         expect(sh.scootersAvailable).toHaveLength(0)
         sh.returnScooterFrom(c)
         expect(sh.scootersAvailable).toHaveLength(1)
-    })
-    test('ScooterHire Charge Scooters', () => {
-        const sh = new ScooterHire()
-        const sc = new ElectricScooter(50, 90)
-
-        sh.addScooter(sc)
-        sh.chargeScooters()
-
-        expect(setTimeout).toHaveBeenCalledTimes(1)
-        expect(sh.scootersAvailable).toHaveLength(1)
-
     })
 })

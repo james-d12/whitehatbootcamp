@@ -8,9 +8,4 @@ describe('Crew', () => {
     test('Crew Constructor Success', () => {
         expect(() => new Crew("Jack")).toBeDefined()
     })
-    test('Random', () => {
-        const c = new Crew("jack")
-        expect(c).toBeInstanceOf(Crew)
-        expect(c.prototype).toBeInstanceOf(Person)
-    })
 })

@@ -63,11 +63,13 @@ class ScooterHire{
      */
     hireScooterTo(customer){
         if(this.scootersAvailable.length <= 0) { console.log(`There are no available scooters for hire.`); return; }
-
-        let scooter = this.scootersAvailable.pop()
+        
+        let scooter = this.scootersAvailable[this.scootersAvailable.length-1]
+        
         if(customer.canAffordScooter(scooter)){
             this.currentlyHired[customer.fullName] = scooter.id
             customer.purchaseScooter(scooter)
+            this.scootersAvailable.pop()
         } else{
             console.log(`${customer.fullName} cannot afford scooter [${scooter.id}], they are short £${scooter.cost - customer.money}.`)
         }

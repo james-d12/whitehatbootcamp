@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run All",
+			"type": "shell",
+			"command": "npm run test:report src/; ./node_modules/.bin/jsdoc ./src/scooter-hire/classes/ ./src/airport/classes/ --destination docs/out",
+			"windows": {
+				"command": "npm run test:report src/; ./node_modules/.bin/jsdoc ./src/scooter-hire/classes/ ./src/airport/classes/ --destination docs/out"
+			},
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

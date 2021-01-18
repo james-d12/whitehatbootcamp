@@ -2,7 +2,14 @@ const Scooter = require('./Scooter')
 const ElectricScooter = require('./ElectricScooter')
 const ChargeStation = require('./ChargeStation')
 
-/** Customer has name, money and a current scooter. */
+/** 
+ * Customer has name, money and a current scooter. 
+ * @property {String} firstName - The firstname of the customer
+ * @property {String} lastname - The lastname of the customer
+ * @property {String} fullname - The fullname of the customer
+ * @property {Int} money - how much money the customer has.
+ * @property {Scooter} scooter - The scooter the customer currently has.
+ * */
 class Customer {
 
     /**
@@ -19,6 +26,10 @@ class Customer {
         this.scooter = undefined 
     }
 
+    /**
+     * Drives the scooter for a specified distance.
+     * @param {Int} distance - The distance to travel.
+     */
     driveScooterFor(distance){
         if(this.scooter == undefined) { console.log(`${this.fullName} does not have a scooter to drive.`); return }
         if(this.scooter.canDriveFor(distance) == false) { console.log(`${this.fullName} cannot drive ${distance} metres.`); return; }
@@ -27,6 +38,10 @@ class Customer {
         console.log(`${this.fullName} has driven their scooter for ${distance} metres. Current Charge [${this.scooter.chargeLevel}%].`)
     }
 
+    /**
+     * Checks if the customer has a scooter.
+     * @returns {boolean} - Returns true / false depending on if they have a scooter or not.
+     */
     hasScooter(){
         return this.scooter == undefined ? false : true;
     }

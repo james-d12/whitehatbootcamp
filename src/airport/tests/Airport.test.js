@@ -22,7 +22,6 @@ describe('Airport', () => {
 
     test('Airport Find Airport Error', () => {
         const h = new Airport("Heathrow Airport")
-
         expect(h.findAirport("asdads")).toBeInstanceOf(Error)
     })
 

@@ -23,6 +23,7 @@ describe('Electric Scooter', () => {
     test('Electric Scooter Can Drive For Extreme', () =>{
         const s = new ElectricScooter(10, 100)
         expect(s.canDriveFor(1000)).toBeTruthy()
+        
     })
     test('Electric Scooter Cannot Drive For', () => {
         const s = new ElectricScooter()
@@ -42,5 +43,10 @@ describe('Electric Scooter', () => {
         const s = new ElectricScooter(0,0)
         s.setChargeLevel(1000)
         expect(s.chargeLevel).toEqual(100)
+    })
+    test('Electric Scooter Drive', () => {
+        const s = new ElectricScooter(10, 100)
+        s.drive(100000)
+        expect(s.chargeLevel).toEqual(0)
     })
 })

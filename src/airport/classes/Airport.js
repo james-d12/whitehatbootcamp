@@ -65,7 +65,7 @@ jsdo
      */
     getInfo() {
         return new Promise((resolve, reject) => {
-            fs.readFile('airport/data/airports.json', (err, data) => {
+            fs.readFile('src/airport/data/airports.json', (err, data) => {
                 if (err) return reject(err)
 
                 const airports = JSON.parse(String(data))

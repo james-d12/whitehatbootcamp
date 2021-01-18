@@ -1,6 +1,10 @@
 const Utility = require('./Utility')
 
-/** Scooter class is a base class for other scooters. */
+/**
+ * A base class for other inherited scooter classes.
+ * @property {Int} cost - The cost of the bike to hire.
+ * @property {String} id - A randomly generated ID for the scooter.
+ */
 class Scooter {
     /** A variable that is used when calculating how far a scooter can go for. */
     static distanceMultiplier = 0.05

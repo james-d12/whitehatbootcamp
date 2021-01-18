@@ -1,6 +1,5 @@
 const ChargeStation = require('../classes/ChargeStation')
 const ElectricScooter = require('../classes/ElectricScooter')
-const Scooter = require('../classes/Scooter')
 
 describe('Charge Station', () => {
     test('Charge Station Get Nearest Equal', () => {
@@ -27,8 +26,9 @@ describe('Charge Station', () => {
 
     test('Charge Station Get Station', () => {
         const cs = new ChargeStation("Unique Station", 100, 123)
+        const id = cs.id
 
-        const station = cs.getChargingStation("Unique Station")
+        const station = cs.getChargingStation(id)
         expect(station).toStrictEqual(cs)
     })
 
@@ -47,5 +47,12 @@ describe('Charge Station', () => {
 
         expect(cs.scootersCharging.length).toEqual(0)
         expect(cs.scootersCharging[0]).toBeUndefined()
+    })
+    test('Charge Station Charge Scooters', async () => {
+        const cs = new ChargeStation("Charging Scooters Test", 200, 200)
+        const s = new ElectricScooter(10, 50)
+
+        cs.addScooter(s)
+        const res = await cs.chargeScooters()
     })
 })

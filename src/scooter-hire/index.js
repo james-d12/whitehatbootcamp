@@ -21,6 +21,7 @@ console.log(`Available scooters: ${sh.scootersAvailable}`)
 
 const fs = require('fs')
 const { create } = require('domain')
+const ChargeStation = require('./classes/ChargeStation')
 
 
 function readScooters(file){
@@ -75,5 +76,4 @@ async function test(){
 
 }
 
-
-test()
+console.log(ChargeStation.chargingStations)

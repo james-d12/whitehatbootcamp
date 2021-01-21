@@ -32,6 +32,12 @@ function readData(file, app){
 const cookBookFile = "./data/cookbook.json"
 const db = new Database("./database/cookbook.db", sqlite3.OPEN_READWRITE)
 
+db.queryEach('DELETE FROM ingredient_category;')
+db.queryEach('DELETE FROM ingredients;') 
+db.queryEach('DELETE FROM measurement_units;')
+db.queryEach('DELETE FROM recipe_ingredients;')
+db.queryEach('DELETE FROM recipes;')
+
 readData(cookBookFile, db).then(
     data => {
         db.close()

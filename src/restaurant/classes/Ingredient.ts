@@ -1,17 +1,19 @@
-import { Item } from "./Item"
-
 export class Ingredient {
-    private _item: Item 
-    private _quantity: number = 0
+    private _name: string = ""
+    private _imageURL: string = "" 
+    private _weight: number = 0
 
-    constructor(item: Item, quantity: number){
-        this._item = item
-        this._quantity = quantity
+    public constructor(name: string, imageURL: string, weight: number){
+        this._name = name 
+        this._imageURL = imageURL
+        this._weight = weight
     }
 
-    get item() : Item { return this._item }
-    get quantity() : number { return this._quantity }
+    get name() : string { return this._name }
+    get imageURL() : string { return this._imageURL }
+    get weight() : number { return this._weight }
 
-    set item(newItem: Item) { this.item = newItem }
-    set quantity(newQuantity: number) { this.quantity = newQuantity }
+    set name(newName: string) { this._name = newName }
+    set imageURL(newImageURL: string) { this._imageURL = newImageURL }
+    set weight(newWeigth: number) { this._weight = newWeigth }
 }

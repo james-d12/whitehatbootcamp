@@ -1,4 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path')
+const { getDataFromJson } = require('./utility')
 
 class Database {
     constructor(dbFilePath, mode){
@@ -33,19 +35,30 @@ class Database {
         let counter = 1
         for(let i = 0; i < data.length; i++){
             const restaurant = data[i];
+            const menus = data[i]['menus']
             this.queryEach(`INSERT INTO Restaurant(name, image_link) VALUES("${restaurant.name}", "${restaurant.image}");`)
     
-            for(let k = 0; k < data[i]['menus'].length; k++){
-                const menu = data[i]['menus'][k]
+            for(let k = 0; k < menus.length; k++){
+                const menu = menus[k]
+                const menuItems = menus[k].items 
                 this.queryEach(`INSERT INTO Menu(title, restaurant_id) VALUES("${menu.title}", ${i+1});`)
                 
-                for(let j = 0; j < data[i]['menus'][k].items.length; j++){
-                    const item = data[i]['menus'][k].items[j]
+                for(let j = 0; j < menuItems.length; j++){
+                    const item = menuItems[j]
                     this.queryEach(`INSERT INTO MenuItem(name, price, menu_id) VALUES ("${item.name}", ${item.price}, ${counter});`)
                 }
                 counter++
             }
         }
+    }
+
+    async populate(jsonFile){
+        const file = path.join(__dirname, jsonFile)
+        const data = await getDataFromJson(file)
+
+        this.clearEntries()
+        this.initialise()
+        this.insert(data)
     }
 
     queryEach(sqlCommand){

@@ -1,11 +1,12 @@
+const Menu = require('../../week2/restaurant/classes/Menu')
+const Restaurant = require('../../week2/restaurant/classes/Restaurant')
 const { restaurant_database } = require('../../week2/restaurant/test')
 
 const express = require('express');
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
-const { database } = require('../../week2/restaurant/test');
-const Menu = require('../../week2/restaurant/classes/Menu');
+
 
 const app = express();
 const port = 3000;

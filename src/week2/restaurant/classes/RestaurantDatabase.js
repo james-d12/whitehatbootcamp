@@ -101,6 +101,38 @@ class RestaurantDatabase {
         })
     }
 
+    async test(){
+        await Restaurant.sync({force:true}).then(async ()=>{
+            await Menu.sync({force:true}).then(async ()=>{
+                await MenuItem.sync({force:true}).then(async ()=>{
+                    let menuIdIndex = 1;
+                    for (let i = 0; i < data.length; i++) {
+                        const restaurantName = data[i].name;
+                        const restaurantImage = data[i].image;
+                        
+                        const restaurant = await Restaurant.create({name: restaurantName, image:restaurantImage});
+
+    
+                        for (let i2 = 0; i2 < data[i].menus.length; i2++) {
+                            const menuTitle = data[i].menus[i2].title
+                            const restaurantId = i + 1;
+    
+                            const menu = await Menu.create({title:menuTitle, restaurantId:restaurantId});
+                            
+                            for (let i3 = 0; i3 < data[i].menus[i2].items.length; i3++){
+                                const itemName = data[i].menus[i2].items[i3].name;
+                                const itemPrice = data[i].menus[i2].items[i3].price;
+    
+                                const menuItem = await MenuItem.create({name:itemName, price:itemPrice, menuId: menuIdIndex});
+                            }
+                            menuIdIndex++;
+                        }
+                    }
+                })
+            })
+        })
+    }
+
     async retrieveRestaurants(sqlCommand='SELECT * FROM Restaurant'){
         console.log("Retrieving all data from Restaurant Database.")
 

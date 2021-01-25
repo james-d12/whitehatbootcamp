@@ -1,7 +1,7 @@
-const Menu = require('./Menu')
-const {sequelize, DataTypes, Model} = require('./Sequelize');
+const Menu = require('./Menu');
+const MenuItem = require('./MenuItem');
 
-class Restaurant extends Model {
+class Restaurant {
     constructor(id, name, image_Link){
         super()
 
@@ -24,17 +24,5 @@ class Restaurant extends Model {
 
 }
 
-Restaurant.init({
-    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, unique: true },
-    name: DataTypes.STRING,
-    image_link: DataTypes.STRING,
-}, { 
-    sequelize, 
-    modelName: 'Restaurant' 
-});
-
-
-Restaurant.hasMany(Menu, { foreignKey: 'restaurant_id'});
-Menu.belongsTo(Restaurant, { as: 'owner', foreignKey: 'restaurant_id'})
 
 module.exports = Restaurant

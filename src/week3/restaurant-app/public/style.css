@@ -1,0 +1,45 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    padding: 1rem;
+    border-bottom: solid 1px black;
+    font-weight: bold;
+}
+
+article{
+    /* border: solid 1px black; */
+    width: calc(100% - 2rem);
+    height: 35em;
+    margin: 1rem 1rem;
+}
+
+article img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    position: center;
+}
+
+/* css for mobile goes here */
+@media screen and (min-width: 40em) {
+    section {
+        margin: 1rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: none;
+        gap: 1rem;
+    }
+    article {
+        margin: 0;
+        width: 100%;
+    }
+}
+@media screen and (min-width: 60em) {    
+    section {
+        grid-template-columns: auto auto auto;
+    }
+}

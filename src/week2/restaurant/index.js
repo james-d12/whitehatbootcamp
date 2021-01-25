@@ -5,7 +5,9 @@ const { getDataFromJson, clearDatabase, initialiseTables, insertIntoDatabase, lo
 
 async function main(){
     const databaseMode = sqlite3.OPEN_READWRITE
-    const databaseFile = path.join(__dirname, "/database/restaurant.sqlite")
+
+    const location = process.env.NODE_ENV === 'test' ? ':memory:' : path.join(__dirname, "/database/restaurant.sqlite")
+    const databaseFile = location
     const dataFile = path.join(__dirname, "/data/restaurants.json")
     const database = new RestaurantDatabase(databaseFile, databaseMode)
     const data = await getDataFromJson(dataFile)
@@ -18,4 +20,13 @@ async function main(){
     database.close()
 }
 
-main()
+async function retrieveDataFromSQL(){
+    const databaseMode = sqlite3.OPEN_READWRITE
+    const databaseFile = process.env.NODE_ENV === 'test' ? ':memory:' : path.join(__dirname, "/database/restaurant.sqlite")
+    const database = new RestaurantDatabase(databaseFile, databaseMode)
+
+    await database.connect()
+    return await loadIntoClass(database)
+}
+
+module.exports = { retrieveDataFromSQL }

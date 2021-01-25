@@ -61,6 +61,7 @@ function insertIntoDatabase(data, database){
         for(let i = 0; i < data.length; i++){
             const restaurant = data[i];
             const menus = data[i]['menus']
+
             insertIntoRestaurant.run(restaurant.name, restaurant.image)
     
             for(let k = 0; k < menus.length; k++){
@@ -100,7 +101,7 @@ async function loadIntoClass(database){
 
     for(let i = 0; i < restaurants.length; i++){
         const r = restaurants[i]
-        const restaurant = new Restaurant(r.name, r.image_link)
+        const restaurant = new Restaurant(r.id, r.name, r.image_link)
         const menus = await getTable(database, `SELECT * FROM Menu WHERE restaurant_id = ${r.id};`)
         
         for(let k = 0; k < menus.length; k++){

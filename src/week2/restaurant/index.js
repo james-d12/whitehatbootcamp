@@ -1,7 +1,7 @@
 const path = require('path')
 const sqlite3 = require('sqlite3').verbose();
 const RestaurantDatabase = require('./classes/RestaurantDatabase')
-const { getDataFromJson, clearDatabase, initialiseTables, insertIntoDatabase, loadIntoClass } = require('./classes/RestaurantUtility')
+const { getDataFromJson, clearDatabase, initialiseTables, insertIntoDatabase, retrieveDataFromDatabase } = require('./classes/RestaurantUtility')
 
 async function main(){
     const databaseMode = sqlite3.OPEN_READWRITE
@@ -16,7 +16,7 @@ async function main(){
     clearDatabase(database)
     initialiseTables(database)
     insertIntoDatabase(data, database)
-    const restaurants = await loadIntoClass(database)
+    const restaurants = await retrieveDataFromDatabase(database)
     database.close()
 }
 
@@ -26,7 +26,7 @@ async function retrieveDataFromSQL(){
     const database = new RestaurantDatabase(databaseFile, databaseMode)
 
     await database.connect()
-    return await loadIntoClass(database)
+    return await retrieveDataFromDatabase(database)
 }
 
 module.exports = { retrieveDataFromSQL }

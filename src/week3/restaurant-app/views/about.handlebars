@@ -1,2 +1,14 @@
-<h1>About this page</h1>
-<small>Created on {{date}} by {{author}}</small>
+<h1>Menus</h1>
+<section>
+    {{#each menus}}
+        <article>
+            <header></header>
+            <main>{{this.title}}</main>
+            <ul>
+            {{#each menuItems}}
+                    <li>{{this.name}}</li> 
+            {{/each}}
+            </ul>
+        </article>
+    {{/each}}
+</section>

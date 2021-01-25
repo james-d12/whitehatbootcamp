@@ -93,7 +93,7 @@ async function getTable(database, command){
     })
 }
 
-async function loadIntoClass(database){
+async function retrieveDataFromDatabase(database){
     console.log("Loading Data into Class Instances.")
 
     let restaurantsList = []
@@ -123,4 +123,4 @@ async function loadIntoClass(database){
     return restaurantsList
 }
 
-module.exports = { getDataFromJson, clearDatabase, initialiseTables, insertIntoDatabase, getTable, loadIntoClass }
+module.exports = { getDataFromJson, clearDatabase, initialiseTables, insertIntoDatabase, getTable, retrieveDataFromDatabase }

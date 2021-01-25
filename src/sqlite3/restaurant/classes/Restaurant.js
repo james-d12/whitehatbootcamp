@@ -1,8 +1,12 @@
+const RestaurantDatabase = require('./RestaurantDatabase')
+
 class Restaurant{
+
     constructor(name, image_Link){
         this.name = name 
         this.image_link = image_Link 
         this.menus = []
+        
     }
 
     addMenu(menu){

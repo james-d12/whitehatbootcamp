@@ -8,12 +8,13 @@ class RestaurantDatabase {
     }
 
     connect(){
-        this.db = new sqlite3.Database(this.dbFilePath, this.mode, (err) => {
-            if (err) {
-                console.log(`Could not connect to the database: ${err.message}`)
-            } else{
+        return new Promise((resolve, reject) => {
+            this.db = new sqlite3.Database(this.dbFilePath, this.mode, (err) => {
+                if (err) { console.log(`Could not connect to the database`); reject(err.message); }
+                    
                 console.log('Connected to the database.')
-            }
+                resolve('Connected to the database.')
+            })
         })
     }
 

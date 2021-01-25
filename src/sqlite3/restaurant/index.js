@@ -10,7 +10,7 @@ async function main(){
     const database = new RestaurantDatabase(databaseFile, databaseMode)
     const data = await getDataFromJson(dataFile)
     
-    database.connect()
+    await database.connect()
     clearDatabase(database)
     initialiseTables(database)
     insertIntoDatabase(data, database)

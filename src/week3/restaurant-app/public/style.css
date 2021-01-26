@@ -3,10 +3,29 @@
     margin: 0;
 }
 
-h1 {
-    padding: 1rem;
-    border-bottom: solid 1px black;
-    font-weight: bold;
+html {
+    background-color: whitesmoke;
+}
+
+h1 { 
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 32px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center; 
+}
+
+h2 {
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 26px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center; 
+    text-decoration: none;
 }
 
 article{
@@ -16,11 +35,17 @@ article{
 }
 
 article img {
-    height: 95%;
+    height: 85%;
     width: 100%;
     object-fit: cover;
     background-repeat: no-repeat;
     position: center;
+}
+
+dl div{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 /* css for mobile goes here */

@@ -3,9 +3,11 @@
     {{#each restaurants}}
         <article>
             <header></header>
-            <main>{{this.name}}</main>
-            <img src="{{this.image}}">
-            <footer>{{this.menus.length}} menus</footer>
+            <a href="/restaurants/{{this.id}}">
+                <img src="{{this.image}}">
+                <h2> {{this.name}}</h2>
+            </a>
+            <footer></footer>
         </article>
     {{/each}}
 </section>

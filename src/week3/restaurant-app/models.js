@@ -11,36 +11,30 @@ class Restaurant extends Model {}
 
 MenuItem.init({
     name: DataTypes.STRING,
-    price: DataTypes.REAL,
-    menuID: DataTypes.INTEGER
-}, { 
-    sequelize, 
-    timestamps: false,
-    modelName: 'MenuItem' 
+    price: DataTypes.INTEGER,
+}, {
+    sequelize,
+    timestamps: false
 });
 
 Menu.init({
-    title: DataTypes.STRING,
-    restaurantID: DataTypes.INTEGER
-}, { 
+    title: DataTypes.STRING}, {
     sequelize,
-    timestamps: false, 
-    modelName: 'Menu' 
+    timestamps: false
 });
 
 Restaurant.init({
     name: DataTypes.STRING,
     image: DataTypes.STRING,
-}, { 
-    sequelize, 
+}, {
+    sequelize,
     timestamps: false,
-    modelName: 'Restaurant' 
 });
 
-Restaurant.hasMany(Menu, { foreignKey: 'restaurantID'});
-Menu.belongsTo(Restaurant, { as: 'owner', foreignKey: 'restaurantID'})
+Menu.hasMany(MenuItem, {as: 'items', foreignKey: 'menu_id'});
+MenuItem.belongsTo(Menu, {foreignKey: 'menu_id'});
 
-Menu.hasMany(MenuItem, { foreignKey: 'menuID'});
-MenuItem.belongsTo(Menu, { as: 'owner', foreignKey: 'menuID'})
+Restaurant.hasMany(Menu, {as: 'menus', foreignKey: 'restaurant_id'})
+Menu.belongsTo(Restaurant, {foreignKey: 'restaurant_id'})
 
 module.exports = { sequelize, DataTypes, Model, Restaurant, Menu, MenuItem }

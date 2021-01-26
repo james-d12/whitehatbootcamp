@@ -1,0 +1,15 @@
+<h1>{{restaurant.name}}</h1>
+
+<section>
+    <form action="/restaurants/{{restaurant.id}}/edit" method="POST">
+        <div>
+            <label>Restaurant name</label>
+            <input type="text" name="name" id="name" placeholder="Enter Restaurant Name" size="30" required>
+        </div>
+        <div>
+            <label>Restaurant image</label>
+            <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
+        </div>
+        <button>Update Restaurant</button>
+    </form>
+</section>

@@ -3,11 +3,18 @@
     {{#each restaurants}}
         <article>
             <header></header>
-            <a href="/restaurants/{{this.id}}">
-                <img src="{{this.image}}">
+            <a id="restaurantImage" href="/restaurants/{{this.id}}">
+                <img id="restaurant-image" src="{{this.image}}">
                 <h2> {{this.name}}</h2>
             </a>
+            <a href="/restaurants/{{this.id}}/edit">Edit</a>
+            <a href="/restaurants/{{this.id}}/delete">Delete</a>
             <footer></footer>
         </article>
     {{/each}}
+    <article>
+        <a href="/restaurants/add">Add</a>
+        <a href="/restaurants/4/edit"><img src="/images/plus-icon.png" alt="Submit" width="48" height="48"></a>
+    </article>
 </section>
+

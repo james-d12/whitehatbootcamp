@@ -16,6 +16,8 @@ app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.get('/', async (request, response) => {
     const restaurants = await Restaurant.findAll({
@@ -25,6 +27,14 @@ app.get('/', async (request, response) => {
     response.render('home', {restaurants})
 })
 
+app.get('/restaurants/add', async(request, response) => {
+    //const restaurant = await Restaurant.findByPk(request.params.id)
+    //response.render('add', {restaurant})
+    
+    const restaurant = await Restaurant.findByPk(request.params.id)
+    response.render('edit', {restaurant})
+})
+
 app.get('/restaurants/:id', async (request, response) => {
     const restaurant = await Restaurant.findByPk(request.params.id)
     const menus = await restaurant.getMenus({
@@ -32,6 +42,33 @@ app.get('/restaurants/:id', async (request, response) => {
         nest: true
     })
     response.render('restaurant', {restaurant, menus})
+})
+
+app.get('/restaurants/:id/delete', async (request, response) => {
+    Restaurant.findByPk(request.params.id)
+        .then(restaurant => {
+            restaurant.destroy()
+            response.redirect('/')
+    })
+})
+
+app.get('/restaurants/:id/edit', async (request, response) => {
+    const restaurant = await Restaurant.findByPk(request.params.id)
+    response.render('edit', {restaurant})
+})
+
+app.post('/restaurants/:id/edit', async (request, response) => {
+    const restaurant = await Restaurant.findByPk(request.params.id)
+    const body = request.body 
+
+    restaurant.update({name: body.name, image: body.url})
+    response.redirect(`/`)
+})
+
+app.post('/restaurants/add', async(request, response) => {
+    const body = request.body;
+    await Restaurant.create({name: body.name, image: body.url})
+    response.redirect('/')
 })
 
 app.listen(port, () => {

@@ -34,12 +34,20 @@ article{
     margin: 1rem 1rem;
 }
 
-article img {
+article #restaurant-image {
     height: 85%;
     width: 100%;
     object-fit: cover;
     background-repeat: no-repeat;
     position: center;
+}
+
+article #restaurant-image-add {
+    height: 50%;
+    width: 50%;
+    object-fit: fill;
+    object-position: center;
+    
 }
 
 dl div{

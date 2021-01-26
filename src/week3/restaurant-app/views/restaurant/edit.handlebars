@@ -1,6 +1,8 @@
 <h1>{{restaurant.name}}</h1>
 
 <section>
+    <article>
+    <h2> Restaurant </h2>
     <form action="/restaurants/{{restaurant.id}}/edit" method="POST">
         <div>
             <label>Restaurant name</label>
@@ -12,4 +14,28 @@
         </div>
         <button>Update Restaurant</button>
     </form>
+
+    {{#each menus}}   
+        <h2>{{this.title}}</h2> 
+        <table style="width:100%">
+        <tr>
+            <th>Item Name</th>
+            <th>Item Price</th>
+        </tr>
+
+        {{#each this.items}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>£{{this.price}}</td>
+            </tr>
+        {{/each}}
+
+        </table>
+    {{/each}}
+
+    </article>
+
 </section>
+
+
+

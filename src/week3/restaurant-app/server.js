@@ -1,10 +1,10 @@
-const database = require('./database')
+const database = require('./private/database')
 
 const express = require('express');
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
-const { Restaurant, Menu, MenuItem } = require('./models');
+const { Restaurant, Menu, MenuItem } = require('./private/models');
 
 const app = express();
 const port = 3000;
@@ -28,11 +28,8 @@ app.get('/', async (request, response) => {
 })
 
 app.get('/restaurants/add', async(request, response) => {
-    //const restaurant = await Restaurant.findByPk(request.params.id)
-    //response.render('add', {restaurant})
-    
     const restaurant = await Restaurant.findByPk(request.params.id)
-    response.render('edit', {restaurant})
+    response.render('restaurant/add', {restaurant})
 })
 
 app.get('/restaurants/:id', async (request, response) => {
@@ -54,7 +51,21 @@ app.get('/restaurants/:id/delete', async (request, response) => {
 
 app.get('/restaurants/:id/edit', async (request, response) => {
     const restaurant = await Restaurant.findByPk(request.params.id)
-    response.render('edit', {restaurant})
+    const menus = await restaurant.getMenus({
+        include: [{model: MenuItem, as: 'items'}],
+        nest: true
+    })
+    response.render('restaurant/edit', {restaurant, menus})
+})
+
+
+app.post('/restaurants/:id/:menuId/:menuItemId/edit', async(request, response) => {
+    const restaurant = await Restaurant.findByPk(request.params.id)
+    const menus = await restaurant.getMenus()
+    const item = menus.items.findByPk(request.params.menuItemId)
+
+    item.update({name: body.name, price: body.price})
+    response.redirect('/restaurants/:id/edit')
 })
 
 app.post('/restaurants/:id/edit', async (request, response) => {

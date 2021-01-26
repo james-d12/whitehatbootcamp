@@ -27,7 +27,6 @@ app.get('/', async (request, response) => {
 
 app.get('/restaurants/:id', async (request, response) => {
     const restaurant = await Restaurant.findByPk(request.params.id)
-    console.log(restaurant)
     const menus = await restaurant.getMenus({
         include: [{model: MenuItem, as: 'items'}],
         nest: true

@@ -34,6 +34,6 @@ exports.RestaurantEdit = async(req, res) => {
 exports.RestaurantDelete = async(req, res) => {
     Restaurant.findByPk(req.params.id).then(restaurant => {
         restaurant.destroy()
-        res.redirect('/')
+        res.redirect('/')   
     })
 }

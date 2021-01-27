@@ -8,7 +8,9 @@ exports.RestaurantAdd = async (req, res) => {
 
 exports.RestaurantEdit = async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
-    const body = req.body 
+    console.log("test = " + req.body)
+    console.log("body = " + JSON.stringify(req.body))
+    const body = req.body
     restaurant.update({name: body.name, image: body.url})
     res.redirect('/');
 }

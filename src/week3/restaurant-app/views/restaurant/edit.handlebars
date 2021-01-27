@@ -1,21 +1,46 @@
 <section class="container">
     <div class="input-box">
       <h2>{{restaurant.name}}</h2>
-      <form id="edit-restaurant-form" action="/restaurants/{{restaurant.id}}/edit" method="POST">
-        <div class="user-box">
-          <input type="text" name="name" id="name" placeholder="Name.... " size="30" required>
-          <label>Restaurant Name:</label>
-        </div>
-        <div class="user-box">
-          <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
-          <label>Restaurant Image:</label>
-        </div>
-      </form>
+        <form id="edit-restaurant-form" action="/restaurants/{{restaurant.id}}/edit" method="POST">
+          <div class="user-box">
+            <input type="text" name="name" id="restaurant-name" placeholder="Name.... " size="30" required>
+            <label>Restaurant Name:</label>
+          </div>
+          <div class="user-box">
+            <input type="url" name="url" id="restaurant-url" placeholder="https://example.com" pattern="https://.*" size="30" required>
+            <label>Restaurant Image:</label>
+          </div>
+        </form>
       <form id="delete-restaurant-form" action="/restaurants/{{restaurant.id}}/delete" method="GET"></form>
 
-      <button type="submit" form="edit-restaurant-form"> <B>Update</B> </button>
-      <button type="submit" form="delete-restaurant-form"> <B>Delete</B> </button>
+      {{#each menus}}
+        <h2> {{this.title}}</h2>  
+        <form>
+          <div class="user-box">
+            <input class="menu-title-class" type="text" name="menu-title" placeholder="Name.... " size="30">
+            <label>Menu Title:</label>
+          </div>
+
+          <dl>
+            {{#each this.items}}
+              <div>
+                <dt>{{this.name}}</dt>
+                <dd>£{{this.price}}</dd>
+              </div>
+            {{/each}}
+          </dl>
+
+        </form>
+      {{/each}}
+      
+      <div class="input-button">
+        <button type="submit" form="edit-restaurant-form"> <B>Update</B> </button>
+        <button type="submit" form="delete-restaurant-form"> <B>Delete</B> </button>
+        <button onclick="restaurantForm({{restaurant.id}});"> <B> Test</B></button>
+      </div>
+
     </div>
 </section>
+
 
 

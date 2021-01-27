@@ -1,41 +1,21 @@
-<h1>{{restaurant.name}}</h1>
-
-<section>
-    <article>
-    <h2> Restaurant </h2>
-    <form action="/restaurants/{{restaurant.id}}/edit" method="POST">
-        <div>
-            <label>Restaurant name</label>
-            <input type="text" name="name" id="name" placeholder="Enter Restaurant Name" size="30" required>
+<section class="container">
+    <div class="input-box">
+      <h2>{{restaurant.name}}</h2>
+      <form id="edit-restaurant-form" action="/restaurants/{{restaurant.id}}/edit" method="POST">
+        <div class="user-box">
+          <input type="text" name="name" id="name" placeholder="Name.... " size="30" required>
+          <label>Restaurant Name:</label>
         </div>
-        <div>
-            <label>Restaurant image</label>
-            <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
+        <div class="user-box">
+          <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
+          <label>Restaurant Image:</label>
         </div>
-        <button>Update Restaurant</button>
-    </form>
+      </form>
+      <form id="delete-restaurant-form" action="/restaurants/{{restaurant.id}}/delete"></form>
 
-    {{#each menus}}   
-        <h2>{{this.title}}</h2> 
-        <table style="width:100%">
-        <tr>
-            <th>Item Name</th>
-            <th>Item Price</th>
-        </tr>
-
-        {{#each this.items}}
-            <tr>
-                <td>{{this.name}}</td>
-                <td>£{{this.price}}</td>
-            </tr>
-        {{/each}}
-
-        </table>
-    {{/each}}
-
-    </article>
-
+      <button type="submit" form="edit-restaurant-form"> <B>Update</B> </button>
+      <button type="submit" form="delete-restaurant-form"> <B>Delete</B> </button>
+    </div>
 </section>
-
 
 

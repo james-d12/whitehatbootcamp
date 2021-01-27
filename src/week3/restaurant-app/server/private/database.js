@@ -22,7 +22,7 @@ async function insertData(data) {
     }
 }
 
-fs.readFile("./private/restaurants.json", (err, data) => {
+fs.readFile("./server/private/restaurants.json", (err, data) => {
     if (err) throw new Error(err);
 
     const parsedData = JSON.parse(data);

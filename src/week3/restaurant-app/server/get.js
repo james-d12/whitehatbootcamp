@@ -1,4 +1,4 @@
-const { Restaurant, Menu, MenuItem } = require('../private/models');
+const { Restaurant, Menu, MenuItem } = require('./private/models');
 const { app } = require('./setup')
 
 app.get('/', async (request, response) => {

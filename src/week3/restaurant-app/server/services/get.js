@@ -22,4 +22,18 @@ exports.RestaurantAdd = async (req, res) => {
     res.render('restaurant/add', {restaurant})
 }
 
+exports.RestaurantEdit = async(req, res) => {
+    const restaurant = await Restaurant.findByPk(req.params.id)
+    const menus = await restaurant.getMenus({
+        include: [{model: MenuItem, as: 'items'}],
+        nest: true
+    })
+    res.render('restaurant/edit', {restaurant, menus})
+}
 
+exports.RestaurantDelete = async(req, res) => {
+    Restaurant.findByPk(req.params.id).then(restaurant => {
+        restaurant.destroy()
+        res.redirect('/')
+    })
+}

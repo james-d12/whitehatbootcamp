@@ -2,7 +2,8 @@ const {Sequelize, DataTypes, Model} = require('sequelize');
 
 const sequelize = new Sequelize('database', 'username', 'password', {
     dialect: 'sqlite',
-    storage: './server/database/restaurant.sqlite'
+    storage: './server/database/restaurant.sqlite',
+    logging: false
 });
 
 class MenuItem extends Model {}

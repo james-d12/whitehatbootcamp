@@ -37,3 +37,7 @@ exports.RestaurantDelete = async(req, res) => {
         res.redirect('/')   
     })
 }
+
+exports.UserRoute = async(req, res) => {
+    console.log("User stuff.")
+}

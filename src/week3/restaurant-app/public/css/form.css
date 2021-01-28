@@ -1,6 +1,7 @@
 form dl div{
   color: white;
 }
+
 .input-button button{
   position: relative;
   display: inline-block;
@@ -12,7 +13,7 @@ form dl div{
   overflow: hidden;
   transition: .5s;
   margin-top: 40px;
-  letter-spacing: 2px
+  letter-spacing: 2px;
 }
 
 .input-button button:hover {
@@ -21,14 +22,13 @@ form dl div{
   border-radius: 5px;
 }
 
-
 .input-box {
   overflow-y: scroll;
   position: absolute;
   top: 50%;
   left: 50%;
   width: 600px;
-  height: 1000px;
+  height: 60%;
   padding: 40px;
   transform: translate(-50%, -50%);
   background: rgba(0,0,0,.5);
@@ -59,11 +59,11 @@ form dl div{
   outline: none;
   background: transparent;
 }
+
 .input-box .user-box label {
   position: absolute;
   top:0;
   left: 0;
-  padding: 10px 0;
   font-size: 16px;
   color: #fff;
   pointer-events: none;

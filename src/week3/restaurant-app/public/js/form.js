@@ -1,34 +1,40 @@
-function get(url){
-    return fetch(url, {method: "GET"})
-}
-
-async function post(url, data) {
-    return await fetch(url, {method: "POST", body: JSON.stringify(data)});
-}
+const menuTitleItems = document.getElementsByClassName('menu-title-class')
 
 function isInvalid(parameter){
     return (parameter.length <= 0 || parameter == undefined)
 }
 
 async function restaurantForm(restaurantID){
-    console.log("test")
     const restaurantName = document.getElementById('restaurant-name').value 
-    const restaurantImage = document.getElementById('restaurant-url').value 
+    const restaurantImage = document.getElementById('restaurant-image').value 
     if(isInvalid(restaurantName) || isInvalid(restaurantImage)){ return; }
 
-    console.log("name: " + restaurantName)
-    console.log("image: " + restaurantImage)
+    let menuItems = {}
+    for(let i = 0; i < menuTitleItems.length; i++ ){
+        const title = menuTitleItems[i].value
+        if(isInvalid(title)) { 
+            continue; 
+        } else {
+            menuItems[i] = title 
+        }
+    }
 
     const data = {
         name: restaurantName,
-        image: restaurantImage
+        image: restaurantImage,
+        menus: menuItems
     }
 
     const url = `/restaurants/${restaurantID}/edit`
-
-    await fetch(url, {
+    
+    fetch(url, {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
         method: "POST", 
         body: JSON.stringify(data)
-    })
-
+    }).then(res =>
+        window.location = res.url
+    );
 }

@@ -1,25 +1,26 @@
 const express = require('express')
 const router = express.Router()
 
-const gServices = require('../services/get')
-const pServices = require('../services/post')
+const GET = require('../services/get')
+const POST = require('../services/post')
+const PUT = require('../services/put')
 
 // Middleware function.
 router.use(function timeLog(req, res, next) {
     next();
 });
 
-router.get('/', gServices.homeRoutes);
-router.get('/restaurants/add', gServices.RestaurantAdd);
-router.get('/restaurants/:id', gServices.RestaurantRoute);
-router.get('/restaurants/:id/edit', gServices.RestaurantEdit);
-router.get('/restaurants/:id/delete', gServices.RestaurantDelete);
+router.get('/', GET.homeRoutes);
+router.get('/restaurants/add', GET.RestaurantAdd);
+router.get('/restaurants/:id', GET.RestaurantRoute);
+router.get('/restaurants/:id/edit', GET.RestaurantEdit);
+router.get('/restaurants/:id/delete', GET.RestaurantDelete);
 router.get('/users')
 
-router.post('/restaurants/add', pServices.RestaurantAdd);
-router.post('/restaurants/:id/edit', pServices.RestaurantEdit);
+router.post('/restaurants/add', POST.RestaurantAdd);
 router.post('/users')
 router.post('/users/login')
 
+router.put('/restaurants/:id/edit', PUT.RestaurantEdit);
 
 module.exports = router

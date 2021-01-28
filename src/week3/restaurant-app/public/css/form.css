@@ -1,8 +1,16 @@
-form dl div{
-  color: white;
+
+.delete-item-button {
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.input-button button{
+.input-box table {
+  color: white;
+  border: none;
+}
+
+.input-button{
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -76,6 +84,10 @@ form dl div{
   left: 0;
   color: #03e9f4;
   font-size: 12px;
+}
+
+.user-box input:invalid, select:invalid, textarea:invalid {
+  border-color: red;
 }
 
 @media screen and (max-width: 600px) {

@@ -1,18 +1,19 @@
-<h1>Restaurants</h1>
+<div class="hero-image">
+    <h1 id="hero-title">Restaurants</h1>
+</div>
 <section>
     {{#each restaurants}}
-        <article>
-            <header></header>
-            <a id="restaurantImage" href="/restaurants/{{this.id}}">
-                <img id="restaurant-image" src="{{this.image}}">
-                <h2> {{this.name}}</h2>
-            </a>
-            <a href="/restaurants/{{this.id}}/edit">Edit</a>
-            <footer></footer>
-        </article>
+    <article id="restaurant-preview">
+        <header></header>
+        <a id="restaurantImage" href="/restaurants/{{this.id}}">
+            <img id="restaurant-image" src="{{this.image}}">
+            <h2> {{this.name}}</h2>
+        </a>
+        <a href="/restaurants/{{this.id}}/edit">Edit</a>
+        <footer></footer>
+    </article>
     {{/each}}
     <article>
-        <a href="/restaurants/add"><img src="/images/plus-icon.png" alt="Submit" width="48" height="48"></a>
+        <a href="/restaurants/add"><img id="image-add" src="/images/plus-icon.png" alt="Submit" width="48" height="48"></a>
     </article>
 </section>
-

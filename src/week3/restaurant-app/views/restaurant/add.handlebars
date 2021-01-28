@@ -4,16 +4,16 @@
     <h2>Restaurant</h2>
     <form id="add-restaurant-form" action="/restaurants/add" method="POST">
       <div class="user-box">
-          <input type="text" name="name" id="name" placeholder="Enter Restaurant Name" size="30" required>
+          <input type="text" name="name" id="name" size="30" required>
           <label>Restaurant Name:</label>
       </div>
       <div class="user-box">
-          <input type="url" name="url" id="url" placeholder="https://example.com" pattern="https://.*" size="30" required>
+          <input type="url" name="url" id="url" pattern="https://.*" size="30" required>
           <label>Restaurant Image:</label>
       </div>
     </form>
-    <div class="input-button">
-      <button type="submit" form="add-restaurant-form"> <B>Add</B> </button>
+    <div>
+      <button class="input-button" type="submit" form="add-restaurant-form"> <B>Add</B> </button>
     </div>
   </div>
 </section>

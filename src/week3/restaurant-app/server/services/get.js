@@ -1,6 +1,7 @@
 const { Restaurant, Menu, MenuItem } = require('../private/models');
 
 exports.homeRoutes = async (req, res) => {
+    req.session.page_views++
     const restaurants = await Restaurant.findAll({
         include: [{model: Menu, as: 'menus'}],
         nest: true

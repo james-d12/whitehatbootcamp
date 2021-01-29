@@ -15,7 +15,7 @@ async function insertData(data) {
 
             for (let k = 0; k < currentMenu.items.length; k++) {
                 const currentMenuItem = currentMenu.items[k]
-                await models.MenuItem.create ({name: currentMenuItem.name, price: currentMenuItem.price, menu_id: menuCounter})
+                await models.MenuItem.create ({name: currentMenuItem.name, price: currentMenuItem.price, image: currentMenuItem.image, menu_id: menuCounter})
             }
             menuCounter++;
         }

@@ -1,3 +1,7 @@
+<div id="navbar">
+  <a class="active" href="/">Home</a>
+</div>
+
 <section class="container">
   <div class="input-box">
     <h2>{{restaurant.name}}</h2>
@@ -13,44 +17,20 @@
       </div>
     </form>
     </div>
-      
+
 
     {{#each menus}}
     <h2> {{this.title}}</h2>
     <div class="user-box">
-      <input type="text" name="menu-title" size="30">
+      <input class="menu-title-class" type="text" name="menu-title" size="30">
       <label>Menu Title:</label>
     </div>
-
-    <table class="table-items" cellspacing="0" cellpadding="0">
-      <thead>
-        <tr>
-          <th>Edit</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-
-      {{#each this.items}}
-      <tbody>
-        <tr>
-          <td> <button class="edit-item-button">Edit</button></td>
-          <td>{{this.name}}</td>
-          <td>{{this.price}}</td>
-          <td> <button class="delete-item-button">Delete</button></td>
-        </tr>
-      </tbody>
-      {{/each}}
-    </table>
     {{/each}}
-
-
 
     <form id="delete-restaurant-form" action="/restaurants/{{restaurant.id}}/delete" method="GET"></form>
     <div>
       <button class="input-button" onclick="restaurantForm({{restaurant.id}});"><B>Update</B></button>
-      <button class="input-button" type="submit" form="delete-restaurant-form"> <B>Delete</B> </button>
+      <button class="input-button" type="submit" form="delete-restaurant-form"><B>Delete</B> </button>
     </div>
   </div>
 </section>

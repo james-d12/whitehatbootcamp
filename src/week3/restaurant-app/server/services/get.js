@@ -11,11 +11,26 @@ exports.homeRoutes = async (req, res) => {
 
 exports.RestaurantRoute = async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
+    const reviews = await restaurant.getReviews({
+        nest: true
+    })
     const menus = await restaurant.getMenus({
         include: [{model: MenuItem, as: 'items'}],
         nest: true
     })
-    res.render('restaurant/restaurant', {restaurant, menus})
+    res.render('restaurant/restaurant', {restaurant, menus, reviews})
+}
+
+exports.TestRoute = async (req, res) => {
+    const restaurant = await Restaurant.findByPk(req.params.id)
+    const reviews = await restaurant.getReviews({
+        nest: true
+    })
+    const menus = await restaurant.getMenus({
+        include: [{model: MenuItem, as: 'items'}],
+        nest: true
+    })
+    res.render('restaurant/test', {restaurant, menus, reviews})
 }
 
 exports.RestaurantAdd = async (req, res) => {

@@ -6,15 +6,13 @@ function isInvalid(parameter){
 }
 
 async function restaurantForm(restaurantID){
-    let menuItems = {}    
-
-    for(let i = 0; i < tables.length; i++){
-        for(let k = 0; k < tables[i].rows.length; k++){
-            const row = tables[i].rows[k]
-            const itemName = rows.cells[0].innerText
-            const itemPrice = Number(rows.cells[0].innerText)
-        }
-    }
+    //for(let i = 0; i < tables.length; i++){
+    //    for(let k = 0; k < tables[i].rows.length; k++){
+    //        const row = tables[i].rows[k]
+    //        const itemName = rows.cells[0].innerText
+    //        const itemPrice = Number(rows.cells[0].innerText)
+    //    }
+    //}
 
     const restaurantName = document.getElementById('restaurant-name').value 
     const restaurantImage = document.getElementById('restaurant-image').value 
@@ -31,10 +29,7 @@ async function restaurantForm(restaurantID){
     const data = {
         name: restaurantName,
         image: restaurantImage,
-        menus: {
-            titles: menus, 
-            items: items 
-        }
+        menus: menus
     }
 
     const url = `/restaurants/${restaurantID}/edit`

@@ -18,6 +18,8 @@ router.get('/restaurants/:id/delete', GET.RestaurantDelete);
 router.get('/users')
 
 router.post('/restaurants/add', POST.RestaurantAdd);
+router.post('/restaurants/:id/review', POST.RestaurantReviewAdd)
+
 router.post('/users')
 router.post('/users/login')
 

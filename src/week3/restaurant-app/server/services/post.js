@@ -1,15 +1,14 @@
 const bcrypt = require('bcrypt')
-const { Restaurant, Menu, MenuItem } = require('../private/models');
+const { Restaurant, Review, Menu, MenuItem } = require('../private/models');
 
 
 exports.RestaurantAdd = async (req, res) => {
-    const body = req.body;
-    await Restaurant.create({name: body.name, image: body.url})
+    const { name, image } = req.body 
+    await Restaurant.create({name: name, image: image})
     res.redirect('/')
 }
 
 exports.UserCreate = async (req, res) => {
-    console.log(req.body)
     try{
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         const user = { name: req.body.name, password: hashedPassword }
@@ -38,4 +37,15 @@ exports.UserLogin = async (req, res) => {
     } catch {
         res.status(500).send()
     }
+}
+
+exports.RestaurantReviewAdd = async (req, res) => {
+    const body = req.body;
+    await Review.create({
+        name: body.name,
+        rating: body.rating, 
+        comment: body.comment, 
+        restaurant_id: req.params.id
+    })
+    res.redirect('back')
 }

@@ -1,13 +1,32 @@
+<div id="navbar">
+  <a class="active" href="/">Home</a>
+</div>
 <div class="hero-image">
     <h1 id="hero-title">Restaurants</h1>
 </div>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+
 <section>
     {{#each restaurants}}
-    <article id="restaurant-preview">
+    <article class="restaurant-preview">
         <header></header>
         <a id="restaurantImage" href="/restaurants/{{this.id}}">
             <img id="restaurant-image" src="{{this.image}}">
-            <h2> {{this.name}}</h2>
+            <h2 class="restaurant-preview-name"> {{this.name}}</h2>
         </a>
         <a href="/restaurants/{{this.id}}/edit">Edit</a>
         <footer></footer>

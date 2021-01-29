@@ -1,14 +1,16 @@
-<h1> {{restaurant.name}} </h1>
+<div id="navbar">
+  <a class="active" href="/">Home</a>
+</div>
+
 <section>
   <div class="input-box">
-    <h2>Restaurant</h2>
     <form id="add-restaurant-form" action="/restaurants/add" method="POST">
       <div class="user-box">
           <input type="text" name="name" id="name" size="30" required>
           <label>Restaurant Name:</label>
       </div>
       <div class="user-box">
-          <input type="url" name="url" id="url" pattern="https://.*" size="30" required>
+          <input type="url" name="image" id="image" pattern="https://.*" size="30" required>
           <label>Restaurant Image:</label>
       </div>
     </form>

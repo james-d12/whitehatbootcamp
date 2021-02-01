@@ -1,16 +1,19 @@
 const state = {
     tasks: []
-}
+}   
 
 const view = state => `
     <section>
         <h2>Tasks</h2>
         <ul>
-            ${state.tasks.map(task => `<li>${task.text}</li>`).join("")}
+            ${state.tasks.map(task => `
+                <li>${task.text} 
+                <button> Delete </button></li>
+            `).join("")}
         </ul>
+    </section>
     <section>
-    <section>
-        <form>
+        <form onsubmit="app.run('add', this); return false;">
             <input name="text" placeholder="Add a task" />
             <button>Add</button>
         </form>
@@ -26,5 +29,11 @@ const update = {
         }
         state.tasks.push(task)
         return state
+    },
+    delete: (state, task) => {
+        state.tasks.remove(task)
+        return state 
     }
 }
+
+app.start('app', state, view, update)

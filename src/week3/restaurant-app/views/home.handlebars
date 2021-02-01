@@ -2,37 +2,58 @@
   <a class="active" href="/">Home</a>
 </div>
 <div class="hero-image">
-    <h1 id="hero-title">Restaurants</h1>
+  <h1 id="hero-title">Restaurants</h1>
 </div>
 
+
 <script>
-window.onscroll = function() {myFunction()};
+  window.onscroll = function () { myFunction() };
 
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
 
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
   }
-}
 </script>
-
 <section>
-    {{#each restaurants}}
-    <article class="restaurant-preview">
-        <header></header>
-        <a id="restaurantImage" href="/restaurants/{{this.id}}">
-            <img class="restaurant-image" src="{{this.image}}" alt="{{this.name}}-icon">
-            <h2 class="restaurant-preview-name">{{this.name}}</h2>
-        </a>
-        <a href="/restaurants/{{this.id}}/edit">Edit {{this.name}}'s Properties</a>
-        <footer></footer>
-    </article>
-    {{/each}}
-    <article>
-        <a href="/restaurants/add"><img id="image-add" src="/images/plus-icon.png" alt="Submit" width="48" height="48"></a>
-    </article>
+  {{#each restaurants}}
+  <article class="restaurant-preview">
+    <header></header>
+    <a class="restaurant-link" href="/restaurants/{{this.id}}" aria-label="Open menu for {{this.name}}">
+      <img class="restaurant-image" src="{{this.image}}" alt="{{this.name}}">
+      <h1 class="restaurant-preview-name">{{this.name}}</h1>
+    </a>
+    <a href="/restaurants/{{this.id}}/edit">Edit {{this.name}}'s Properties</a>
+    <footer></footer>
+  </article>
+  {{/each}}
+  <article>
+    <a href="/restaurants/add"><img id="image-add" src="/images/plus-icon.png" alt="Submit" width="48" height="48"></a>
+  </article>
 </section>
+
+<div>Number of page loads:
+  <span id="CounterVisitor"></span>
+</div>
+<script>
+  var n = localStorage.getItem('on_load_counter');
+
+  if (n === null) {
+    n = 0;
+  }
+  n++;
+
+  localStorage.setItem("on_load_counter", n);
+
+  nums = n.toString().split('').map(Number);
+  document.getElementById('CounterVisitor').innerHTML = '';
+  for (var i of nums) {
+    document.getElementById('CounterVisitor').innerHTML += '<span class="counter-item">' + i + '</span>';
+  }
+
+</script>

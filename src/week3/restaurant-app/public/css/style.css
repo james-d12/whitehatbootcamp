@@ -36,7 +36,7 @@ article {
   margin: 1rem 1rem;
 }
 
-article #restaurant-image {
+article .restaurant-image {
   height: 85%;
   width: 100%;
   object-fit: cover;
@@ -45,7 +45,7 @@ article #restaurant-image {
   border-radius: 8px;
 }
 
-article #restaurant-image-add {
+article .restaurant-image-add {
   height: 50%;
   width: 50%;
   object-fit: fill;

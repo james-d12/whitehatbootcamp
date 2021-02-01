@@ -1,0 +1,17 @@
+<section>
+  <div class="input-box">
+    <form id="user-login-form" action="/users/login" method="POST">
+      <div class="user-box">
+          <input type="text" name="name" id="name" size="30" required>
+          <label>Username:</label>
+      </div>
+      <div class="user-box">
+          <input type="url" name="image" id="image" pattern="https://.*" size="30" required>
+          <label>Password:</label>
+      </div>
+    </form>
+    <div>
+      <button class="input-button" type="submit" form="user-login-form"> <B>Add</B> </button>
+    </div>
+  </div>
+</section>

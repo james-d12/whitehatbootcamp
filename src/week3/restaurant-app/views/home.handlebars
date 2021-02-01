@@ -25,10 +25,10 @@ function myFunction() {
     <article class="restaurant-preview">
         <header></header>
         <a id="restaurantImage" href="/restaurants/{{this.id}}">
-            <img id="restaurant-image" src="{{this.image}}">
-            <h2 class="restaurant-preview-name"> {{this.name}}</h2>
+            <img class="restaurant-image" src="{{this.image}}" alt="{{this.name}}-icon">
+            <h2 class="restaurant-preview-name">{{this.name}}</h2>
         </a>
-        <a href="/restaurants/{{this.id}}/edit">Edit</a>
+        <a href="/restaurants/{{this.id}}/edit">Edit {{this.name}}'s Properties</a>
         <footer></footer>
     </article>
     {{/each}}

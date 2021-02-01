@@ -27,9 +27,9 @@
     {{#each this.items}}
     <article class="restaurant-preview">
         <header></header>
-        <a id="restaurantImage">
-            <img id="restaurant-image" src="{{this.image}}">
-            <h2 class="restaurant-preview-name"> {{this.name}} - £{{this.price}}</h2>
+        <a>
+            <img class="restaurant-image" src="{{this.image}}">
+            <h2> {{this.name}} - £{{this.price}}</h2>
         </a>
         <footer></footer>
     </article>
@@ -40,9 +40,9 @@
 </section>
 {{/each}}
 
+<h1>Reviews</h1>
 <section>
      <article >
-    <h1>Reviews</h1>
       <div class="reviews">
           {{#each reviews}}
               <h3>{{this.name}}</h3>

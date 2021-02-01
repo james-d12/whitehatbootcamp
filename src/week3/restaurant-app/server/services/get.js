@@ -21,18 +21,6 @@ exports.RestaurantRoute = async (req, res) => {
     res.render('restaurant/restaurant', {restaurant, menus, reviews})
 }
 
-exports.TestRoute = async (req, res) => {
-    const restaurant = await Restaurant.findByPk(req.params.id)
-    const reviews = await restaurant.getReviews({
-        nest: true
-    })
-    const menus = await restaurant.getMenus({
-        include: [{model: MenuItem, as: 'items'}],
-        nest: true
-    })
-    res.render('restaurant/test', {restaurant, menus, reviews})
-}
-
 exports.RestaurantAdd = async (req, res) => {
     const restaurant = await Restaurant.findByPk(req.params.id)
     res.render('restaurant/add', {restaurant})
@@ -54,6 +42,12 @@ exports.RestaurantDelete = async(req, res) => {
     })
 }
 
-exports.UserRoute = async(req, res) => {
-    console.log("User stuff.")
+exports.UserCreate = async(req, res) => {
+    res.render('user/create')
 }
+
+exports.UserLogin = async(req, res) => {
+    res.render('user/login')
+}
+
+

@@ -1,0 +1,33 @@
+<div class="app">
+    <header>
+        <h1>Todo App</h1>
+    </header>
+
+    <div class="lists">
+        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h1> To-Do </h1>
+        </div>
+        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h1> In-Progress </h1>
+        </div>
+        <div class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h1> Completed </h1>
+        </div>
+    </div>
+
+    <form id="add-task-form">
+        <div>
+            <input type="text" name="title" id="task-title" size="30" required>
+            <label>Task Title:</label>
+        </div>
+        <div>
+            <input type="text" name="description" id="task-description" size="30" required>
+            <label>Task Description:</label>
+        </div>
+    </form>
+
+    <button onclick="addTask();"><B>Add</B></button>
+</div>
+
+
+<script src="/js/main.js"></script>

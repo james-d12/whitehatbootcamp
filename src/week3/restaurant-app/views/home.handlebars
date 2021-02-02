@@ -5,7 +5,6 @@
   <h1 id="hero-title">Restaurants</h1>
 </div>
 
-
 <script>
   window.onscroll = function () { myFunction() };
 
@@ -24,7 +23,7 @@
   {{#each restaurants}}
   <article class="restaurant-preview">
     <header></header>
-    <a class="restaurant-link" href="/restaurants/{{this.id}}" aria-label="Open menu for {{this.name}}">
+    <a id="{{this.name}}-{{this.id}}" class="restaurant-link" href="/restaurants/{{this.id}}" aria-label="Open menu for {{this.name}}">
       <img class="restaurant-image" src="{{this.image}}" alt="{{this.name}}">
       <h1 class="restaurant-preview-name">{{this.name}}</h1>
     </a>

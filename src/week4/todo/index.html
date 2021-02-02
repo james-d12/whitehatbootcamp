@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Todo App</title>
+	<link rel="stylesheet" href="main.css" />
+	<link rel="stylesheet" href="form.css" />
+	<script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+
+</head>
+<body>
+	<div class="app">
+        <header> <h1>Todo App</h1> </header>
+        
+		<div class="lists">
+			<div id="todo-list" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<h1> To-Do </h1>
+				
+            </div>
+			<div id="inprogress-list" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h1> In-Progress </h1>
+            </div>
+			<div id="completed-list" class="list" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h1> Completed </h1>
+            </div>
+		</div>
+		
+		<form id="add-task-form">
+			<div>
+			  <input type="text" name="title" id="task-title" size="30" required>
+			  <label>Task Title:</label>
+			</div>
+			<div>
+				<input type="text" name="description" id="task-description" size="30" required>
+				<label>Task Description:</label>
+			</div>
+		  </form>
+
+		<button onclick="addTask();"><B>Add</B></button>
+    </div>
+
+    
+	<script src="main.js"></script>
+</body>
+</html>

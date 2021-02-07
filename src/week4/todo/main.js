@@ -8,7 +8,6 @@ Sortable.create(todoList)
 Sortable.create(inprogressList)
 Sortable.create(completedList)
 
-
 let list_items = document.querySelectorAll('.list-item');
 
 function drag(event) {
@@ -22,7 +21,10 @@ function allowDrop(event) {
 function drop(event) {
 	event.preventDefault();
 	const data = event.dataTransfer.getData("div");
-	event.target.appendChild(document.getElementById(data))
+
+	if (event.target.id == "To-Do" || event.target.id == "In-Progress" || event.target.id == "Completed"){
+		event.target.appendChild(document.getElementById(data))
+	}
 }
 
 

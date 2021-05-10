@@ -1,0 +1,21 @@
+{
+  "name": "http-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Http-Challenge.js",
+  "scripts": {
+    "run": "node ./Http-Challenge.js",
+    "run-ts": "ts-node ./Http-Challenge.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.2",
+    "@types/node-fetch": "^2.5.10",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}

@@ -6,17 +6,31 @@ class HTTPCHallenge{
         this.guests = guests 
         this.menu = menu
         this.id = ""
+        this.url = "https://http-challenge.multiverse-coaches.io/apprentices";
+    }
+
+    async sendResponse(url, method, headers=null, body=null) {
+        const response = await fetch(url, {
+            method: method, 
+            headers: headers,
+            body: body,
+        })
+        return response;
     }
 
     async getID(){
-        const response = await fetch("https://http-challenge.multiverse-coaches.io/apprentices", {
-            method: 'POST', 
-            headers: {  "Accept": "application/json", 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: this.name }),
-        }).catch(err => { console.log(`Failed to get URL with Error: ${err.message}`); })
+        const url = this.url;
+        const method = 'POST';
+        const headers = {  "Accept": "application/json", 'Content-Type': 'application/json' };
+        const body = JSON.stringify({ name: this.name })
 
-        const text = await response.text().catch(err => { console.log(`Failed to get URL with Error: ${err.message}`);});
-        this.id = text.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)[0];
+        try {
+            const response = await this.sendResponse(url, method, headers, body);
+            const text = await response.text()
+            this.id = text.match(/(?<=\/)[a-zA-Z0-9]+(?=')/)[0];
+        } catch (err) {
+            console.log(`Error whilst fetching URL with Error: ${err.message}.`);
+        }
     }
 
     async sendPeople(){
@@ -28,44 +42,60 @@ class HTTPCHallenge{
         formBody.push(encodedKey + "=" + encodedValue);
         formBody = formBody.join("&");
 
-        const response = await fetch(`https://http-challenge.multiverse-coaches.io/apprentices/${this.id}`, { 
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
-            body: formBody
-        }).catch(err => { console.log(`Failed to get URL with Error: ${err.message}`); })
+        const url = `${this.url}/${this.id}`;
+        const method = 'PATCH';
+        const headers = { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' };
+        const body = formBody;
 
-        const text = await response.text().catch(err => { console.log(`Failed to get URL with Error: ${err.message}`);});
-        console.log(text);
+        try {
+            const response = await this.sendResponse(url, method, headers, body);
+            const text = await response.text()
+            console.log(text);
+        } catch(err){
+            console.log(`Error whilst fetching URL with Error: ${err.message}.`);
+        }
     }
 
     async sendMenu() {
         if(this.id === "") { return; }
 
-        const response = await fetch(`https://http-challenge.multiverse-coaches.io/apprentices/${this.id}/menus?starter=${this.menu['starter']}&main=${this.menu['main']}&dessert=${this.menu['dessert']}`, { 
-            method: 'GET'
-        }).catch(err => { console.log(`Failed to get URL with Error: ${err.message}`); })
-        const text = await response.text().catch(err => { console.log(`Failed to get URL with Error: ${err.message}`);});
-        console.log(text);
+        const url = `${this.url}/${this.id}/menus?starter=${this.menu['starter']}&main=${this.menu['main']}&dessert=${this.menu['dessert']}`
+        const method = 'GET';
+
+        try {
+            const response = await this.sendResponse(url, method);
+            const text = await response.text();
+            console.log(text);
+        } catch (err) {
+            console.log(`Error whilst fetching URL with Error: ${err.message}.`);
+        }
     }
 
     async doWashingUp(){
         if(this.id === "") { return; }
 
-        const response = await fetch(`https://http-challenge.multiverse-coaches.io/apprentices/${this.id}`, { 
-            method: 'DELETE'
-        }).catch(err => { console.log(`Failed to get URL with Error: ${err.message}`); })
+        const url = `${this.url}/${this.id}`;
+        const method = 'DELETE';
 
-        const text = await response.text().catch(err => { console.log(`Failed to get URL with Error: ${err.message}`);});
-        console.log(text);
+        try {
+            const response = await this.sendResponse(url, method);
+            const text = await response.text()
+            console.log(text);
+        } catch(err) {
+            console.log(`Error whilst fetching URL with Error: ${err.message}.`);
+        }
     }
 
 }
 
-
 async function main(){
-    httpChallenge = new HTTPCHallenge("james", "einstein, attenborough, scoobydoo", { starter: "soup", main: "curry", dessert: "tiramasu" });
+    const name = "james";
+    const guests = "einstein, attenborough, scoobydoo";
+    const menus = { starter: "soup", main: "curry", dessert: "tiramasu" };
+
+    httpChallenge = new HTTPCHallenge(name, guests, menus);
+    
     await httpChallenge.getID()
-    console.log(httpChallenge.id);
     await httpChallenge.sendPeople();
     await httpChallenge.sendMenu();
     await httpChallenge.doWashingUp();

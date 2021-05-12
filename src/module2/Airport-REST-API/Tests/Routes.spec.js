@@ -8,12 +8,42 @@ beforeAll(() => {
 });
 
 describe("Airports Routes", () => {
-    test("Should Return 200 = Can Get all Airplanes.", (done) => {
+    test("Should Return 200 - Can Get all Airplanes.", (done) => {
         request(app)
             .get('/airports')
             .expect(200)
             .expect(response => {
                 expect(response.body.length).toBeGreaterThan(28000)
+            })
+            .end(done)
+    })
+
+    test('Should Return 200 - Can Get Airplanes = Page: 1; PageSize: 25.', (done) => {
+        request(app)
+            .get('/airports/?page=1&pageSize=25')
+            .expect(200)
+            .expect(response => {
+                expect(response.body.length).toStrictEqual(25);
+            })
+            .end(done)
+    })
+
+    test('Should Return 200 - Can Get Airplanes = Page: 15; PageSize: 10.', (done) => {
+        request(app)
+            .get('/airports/?page=15&pageSize=10')
+            .expect(200)
+            .expect(response => {
+                expect(response.body.length).toStrictEqual(150);
+            })
+            .end(done)
+    })
+
+    test('Should Return 200 - Can Get Airplanes = Page: 150; PageSize: 75.', (done) => {
+        request(app)
+            .get('/airports/?page=150&pageSize=75')
+            .expect(200)
+            .expect(response => {
+                expect(response.body.length).toStrictEqual(11250);
             })
             .end(done)
     })

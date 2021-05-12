@@ -4,9 +4,9 @@
   "description": "",
   "main": "./Server/Server.js",
   "scripts": {
+    "test": "jest --runInBand --detectOpenHandles --verbose",
     "pop": "node ./Server/Populate.js",
-    "dev": "nodemon ./Server/App.js",
-    "test": "jest --runInBand --detectOpenHandles --verbose"
+    "dev": "nodemon ./Server/App.js"
   },
   "author": "",
   "license": "ISC",

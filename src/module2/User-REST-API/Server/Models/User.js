@@ -29,6 +29,7 @@ User.init({
     username: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             notEmpty: true,
             isAlphanumeric: true
@@ -42,6 +43,15 @@ User.init({
             isAlphanumeric: true
         }
     },
+    group: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "user",
+        validate: {
+            notEmpty: true,
+            isAlphanumeric: true
+        }
+    }
 }, 
 {
     hooks: {
@@ -51,8 +61,23 @@ User.init({
           } catch(err){
             console.error(`Error hashing password for user ${user.username}`);
           }
+        },
+        beforeBulkCreate: (users) => {
+            for (const user of users) {
+                user.password = bcrypt.hashSync(user.password, 10);
+            }
+        },
+    },
+    instanceMethods: {
+        compare: async(user, password) =>{
+            try {
+                return await bcrypt.compare(password, user.password);
+            } catch (error) {
+                console.error(`Error comparing passwords with Error: ${error.message}.`);
+                return false;
+            }
         }
-    },  
+    },
     sequelize,
     timestamps: false,
     primaryKey: true,

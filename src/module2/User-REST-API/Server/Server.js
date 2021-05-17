@@ -1,9 +1,28 @@
+require('better-logging')(console);
 const express = require('express')
-const app = express()
-const router = require("./Routes/Router");
+const UserController = require("./Controllers/UserController");
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(router);
+class Server {
+    constructor(controllers){
+        this.app = express()
+        this.setupOptions();
+        this.initialiseControllers(controllers)
+    }
 
-module.exports = app;
+    setupOptions(){
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: false }));
+    }
+
+    initialiseControllers(controllers){
+        controllers.forEach(controller => {
+            this.app.use('/', controller.router)
+        });
+    }
+}
+
+server = new Server([
+    new UserController()
+])
+
+module.exports = server.app;

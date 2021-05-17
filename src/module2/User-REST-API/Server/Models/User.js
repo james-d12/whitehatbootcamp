@@ -69,9 +69,9 @@ User.init({
         },
     },
     instanceMethods: {
-        compare: async(user, password) =>{
+        compare: async(userpassword, password) =>{
             try {
-                return await bcrypt.compare(password, user.password);
+                return await bcrypt.compare(password, userpassword);
             } catch (error) {
                 console.error(`Error comparing passwords with Error: ${error.message}.`);
                 return false;

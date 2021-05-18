@@ -1,56 +1,37 @@
-const { response } = require('express')
+require('dotenv').config('.env');
 const express = require('express')
-const User = require('../Models/User')
+const fetch = require("node-fetch");
+const request = require("request");
 
-class Counter {
-    static lookup = {}
-    
-    constructor(id) {
-        this.value = 1
-        Counter.lookup[id] = this 
-    }
-
-    inc() {
-        this.value += 1
-        return this.value.toString()
-    }
-}
-
+const { CLIENT_ID, CLIENT_SECRET, AUTH0_DOMAIN, AUTH0_AUDIENCE } = process.env
 
 class HomeController {
     router = express.Router();
-    constructor(){
-        this.router.use(this.middleware);
-        this.router.get('/counter', this.counterGet);
+    constructor() {
+        this.router.get('/login', this.login)
     }
 
-    middleware(req, res, next) {
-        Counter.lookup[req.session.id] = Counter.lookup[req.session.id] || new Counter(req.session.id)
-        next()
-    }
-
-    counterGet(req, res) {
-        res.send(Counter.lookup[req.session.id].inc())
-    }
-
-
-    async login(req, res){
-        const username = req.body.username;
-        const password = req.body.password;
-
-        if(username && password){
-            const user = await User.findOne({where: { username: username }})
-            const result = await User.compare(user.password, password)
-
-            if(result === 1){
-                response.session.loggedin = true;
-            }
+    async login(req, res) {
+        const auth0Config = {
+            client_id: `${CLIENT_ID}`,
+            client_secret: `${CLIENT_SECRET}`,
+            audience: AUTH0_AUDIENCE,
+            grant_type: 'client_credentials'
         }
+
+        fetch(`${AUTH0_DOMAIN}/oauth/token`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(auth0Config)
+        })
+        .then(res => res.json())
+        .then(body => res.status(200).send(body.access_token))
+        .catch(error => {
+            console.error(`Error: ${error.message}.`) 
+            res.status(400).send()
+        })
     }
 
-    async logout(req, res) {
-        response.session.loggedin = false;
-    }
 }
 
 module.exports = HomeController;

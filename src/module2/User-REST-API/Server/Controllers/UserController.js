@@ -1,6 +1,7 @@
 const express = require('express')
 const basicAuth = require("express-basic-auth");
 const bcrypt = require("bcrypt");
+const { checkJwt } = require("../Auth");
 const User = require("../Models/User");
 const Validate = require("../Validators/Validate");
 const UserValidator = require("../Validators/UserValidator");
@@ -9,31 +10,13 @@ const { UniqueConstraintError } = require("sequelize");
 
 class UserController {
     router = express.Router();
-
-    __dbAuthorizer(username, password, callback) {
-        User.findOne({ where: { username: username, group: "admin" }}).then(user => {
-            bcrypt.compare(password, user.password, callback);
-        }).catch(error => {
-            callback()
-        })
-    }
-
+    
     constructor(){
-        this.router.use(basicAuth({
-            authorizer: this.__dbAuthorizer,
-            authorizeAsync: true, 
-            challenge: true,
-            unauthorizedResponse: (req) => {
-                console.warn(`Unauthorised Request from IP: ${req.ip}.`);
-                return `unauthorized. ip: ${req.ip}`
-            }
-        }));
-
-        this.router.get('/users', this.usersGet);
-        this.router.post('/users', UserValidator.usersPost(), Validate, this.usersPost);
-        this.router.get('/users/:username', this.userGet);
-        this.router.put('/users/:username', this.userPut);
-        this.router.delete('/users/:username', this.userDelete);
+        this.router.get('/users', checkJwt, this.usersGet);
+        this.router.post('/users', checkJwt, UserValidator.usersPost(), Validate, this.usersPost);
+        this.router.get('/users/:username', checkJwt, this.userGet);
+        this.router.put('/users/:username', checkJwt, this.userPut);
+        this.router.delete('/users/:username', checkJwt, this.userDelete);
     }
 
     async usersGet(req, res){

@@ -11,7 +11,7 @@ class HomeController {
         this.router.get('/login', this.login)
     }
 
-    async login(req, res) {
+    login(req, res) {
         const auth0Config = {
             client_id: `${CLIENT_ID}`,
             client_secret: `${CLIENT_SECRET}`,

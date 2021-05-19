@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { check, query, validationResult, param } = require('express-validator');
 const Airport = require("../Models/Airport");
-const Plane = require("../Models/Plane");
+const Plane = require("../Models/Plane");s
 
 router.get(
     '/airports', 

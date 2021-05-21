@@ -1,0 +1,10 @@
+<%- include('partials/header') -%>
+
+<h1 class="text-4xl mb-4">All Users</h1>
+
+<% for (let i = 0; i < users.length; i++) { %>
+
+  <pre class="block bg-gray-300 p-4 text-sm overflow-scroll"><%= JSON.stringify(users[i]) %></pre>
+<% } %>
+
+<%- include('partials/footer') -%>

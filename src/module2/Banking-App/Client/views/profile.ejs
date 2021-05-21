@@ -1,0 +1,71 @@
+<%- include('partials/header') -%>
+
+<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+  <div class="text-sm lg:flex-grow">
+    <a href="/users" class="block mt-4 lg:inline-block lg:mt-0 mr-4">Get All Users</a>
+    <a href="/users/sync" class="block mt-4 lg:inline-block lg:mt-0 mr-4">Synchronize Account</a>
+  </div>
+</div>
+
+<h1 class="text-4xl mb-4">Welcome <%= user.nickname %></h1>
+
+<div style="float: left; margin: 10px">
+  <img class="block py-3" src="<%= user.picture %>" width="300">
+</div>
+
+<div style="float: left; margin: 12px;">
+  <div>
+    <h3 class="text-2xl mb-4"> <strong> Nickname: </strong> <%= user.nickname %> </h3>
+    <h3 class="text-2xl mb-4"> <strong> Name: </strong> <%= user.name %> </h3>
+    <h3 class="text-2xl mb-4"> <strong> Email: </strong> <%= user.email %> </h3>
+    <h3 class="text-2xl mb-4"> <strong> Balance: </strong> &#163;<%= user.money %> </h3>
+  </div>
+  <hr>
+  <br/>
+  <button onclick="openAddFundForm();"> Add Funds </button>
+  <button> View Orders </button>
+  <button> Transfer Funds </button>
+</div>
+
+<div id="add-fund-popup" class="input-box">
+    <form class="add-fund-form" action="/users/fund" method="POST">
+        <div class="user-box">
+            <input type="number" name="money" min=1 max=10000 required>
+            <label for="money"><b>Money</b></label>
+        </div>
+        <button id="add-fund-button" class="input-button" type="submit"> <B>Add</B> </button>
+        <button id="close-fund-button" class="input-button" onclick="closeAddFundForm();"> <B>Close</B> </button>
+    </form> 
+</div>
+
+<%- include('partials/footer') -%>
+
+<script>
+    const formAddFund = document.getElementById('add-fund-popup')
+    const formAddButtonFund = document.getElementById('add-fund-popup-button')        
+    function openAddFundForm(){
+        if(formAddFund.style.display != "block"){
+          formAddFund.style.display = "block"
+        }
+    }
+    function closeAddFundForm(){
+        if(formAddFund.style.display != "none"){
+          formAddFund.style.display = "none"
+        }
+    }
+</script>
+
+
+<style>
+  button {
+    color: darkslategrey;
+    margin: 15px;
+    font-size: x-large;
+    border: none;
+    outline: none;
+  }
+  button:hover {
+    transform: scale(1.10);
+  }
+
+</style>
